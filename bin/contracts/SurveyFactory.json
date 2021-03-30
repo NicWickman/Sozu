@@ -1,0 +1,696 @@
+{
+    "contractName": "SurveyFactory",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "survey",
+                    "type": "address"
+                }
+            ],
+            "name": "NewSurvey",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string[]",
+                    "name": "_cids",
+                    "type": "string[]"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_surveyType",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_surveyName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_surveyDesc",
+                    "type": "string"
+                }
+            ],
+            "name": "createAndEndow",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "surveys",
+            "outputs": [
+                {
+                    "internalType": "contract Survey",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"survey\",\"type\":\"address\"}],\"name\":\"NewSurvey\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string[]\",\"name\":\"_cids\",\"type\":\"string[]\"},{\"internalType\":\"string\",\"name\":\"_surveyType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_surveyName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_surveyDesc\",\"type\":\"string\"}],\"name\":\"createAndEndow\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"surveys\",\"outputs\":[{\"internalType\":\"contract Survey\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/cryptodev/sozu/contracts/SurveyFactory.sol\":\"SurveyFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/cryptodev/sozu/contracts/Survey.sol\":{\"keccak256\":\"0x2a75ccae48364d62cca2d2c19f1bb2fde79ebc87793a7038119b8c3db86899ff\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9add7c3eb5655d756d9cedfa04458a0d42365d419dfc44bfdfc5790d5de13d07\",\"dweb:/ipfs/QmNfBWfF4bGw7AtSq32hSiAHYAPr1L6F7AmFZpEyafPWhR\"]},\"e:/cryptodev/sozu/contracts/SurveyFactory.sol\":{\"keccak256\":\"0xf71d790bd4183b7f87e67d0d2a97695ba759ac35aa2f652ca6f4d52a908b7d97\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d467b57280204e0d0bda9d435410263058951252b4e3de67c3d58b348aa265f2\",\"dweb:/ipfs/QmeTRPHRnheKdQQDnBCCmn1z5h4Sy56XxqGh6nXa1agJ2H\"]},\"e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x15e2d5bd4c28a88548074c54d220e8086f638a71ed07e6b3ba5a70066fcf458d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://90faf5851c02f9bd42c5bfb54d4f0421a2612f50ab80b2c4fa24fa3792071cc2\",\"dweb:/ipfs/QmRGM4F2PcGVF85aTfaA9YBhCHHDqrMhRjyp6fGeBTtirb\"]},\"e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b5061091f806100206000396000f3fe6080604052600436106100295760003560e01c806386e68b901461002e5780639436202614610064575b600080fd5b34801561003a57600080fd5b5061004e6100493660046102c1565b610079565b60405161005b91906102d9565b60405180910390f35b6100776100723660046101bf565b6100a3565b005b6000818154811061008957600080fd5b6000918252602090912001546001600160a01b0316905081565b6000346040516100b29061014d565b6040518091039082f09050801580156100cf573d6000803e3d6000fd5b50600080546001810182558180527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319166001600160a01b038416908117909155604051929350917fe4a31ef77e86b8f2bb7fb6155fa7ed2b27d5bfff238069f816cd02b9d30212e19190a25050505050565b6105d88061031283390190565b600082601f83011261016a578081fd5b813567ffffffffffffffff81111561017e57fe5b610191601f8201601f19166020016102ed565b8181528460208386010111156101a5578283fd5b816020850160208301379081016020019190915292915050565b600080600080608085870312156101d4578384fd5b843567ffffffffffffffff808211156101eb578586fd5b818701915087601f8301126101fe578586fd5b813560208282111561020c57fe5b61021981828402016102ed565b828152818101908583018a5b8581101561024e5761023c8e8684358b010161015a565b84529284019290840190600101610225565b50909950505088013592505080821115610266578485fd5b6102728883890161015a565b94506040870135915080821115610287578384fd5b6102938883890161015a565b935060608701359150808211156102a8578283fd5b506102b58782880161015a565b91505092959194509250565b6000602082840312156102d2578081fd5b5035919050565b6001600160a01b0391909116815260200190565b60405181810167ffffffffffffffff8111828210171561030957fe5b60405291905056fe6080604052600061000e61005d565b600080546001600160a01b0319166001600160a01b0383169081178255604051929350917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350610061565b3390565b610568806100706000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c8063715018a61461005c5780638da5cb5b14610066578063c0e9d8e814610084578063dace9f7f1461009a578063f2fde38b146100ad575b600080fd5b6100646100c0565b005b61006e61017e565b60405161007b9190610408565b60405180910390f35b61008c61018d565b60405161007b92919061041c565b6100646100a83660046103da565b61026e565b6100646100bb3660046103da565b6102c2565b6100c86103d6565b6001600160a01b03166100d961017e565b6001600160a01b031614610134576040805162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031690565b6060600060034781805480602002602001604051908101604052809291908181526020016000905b828210156102605760008481526020908190208301805460408051601f600260001961010060018716150201909416939093049283018590048502810185019091528181529283018282801561024c5780601f106102215761010080835404028352916020019161024c565b820191906000526020600020905b81548152906001019060200180831161022f57829003601f168201915b5050505050815260200190600101906101b5565b505050509150915091509091565b61708060015442031161029c5760405162461bcd60e51b8152600401610293906104ba565b60405180910390fd5b600280546001600160a01b0319166001600160a01b039290921691909117905542600155565b6102ca6103d6565b6001600160a01b03166102db61017e565b6001600160a01b031614610336576040805162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b6001600160a01b03811661037b5760405162461bcd60e51b815260040180806020018281038252602681526020018061050d6026913960400191505060405180910390fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b3390565b6000602082840312156103eb578081fd5b81356001600160a01b0381168114610401578182fd5b9392505050565b6001600160a01b0391909116815260200190565b60006040820160408352808551808352606085019150602092506060838202860101838801855b838110156104a857878303605f1901855281518051808552885b81811015610478578281018901518682018a0152880161045d565b8181111561048857898983880101525b5095870195601f01601f1916939093018601925090850190600101610443565b50509290940194909452949350505050565b60208082526032908201527f5468697320776f726b2069732063757272656e746c7920726573657276656420604082015271313c9030b737ba3432b9103bb7b935b2b91760711b60608201526080019056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a2646970667358221220ae7f2cdb65fbefe9ee11e1a2cf87c23cc9e349f08474dca7f27eecfb9dc8498664736f6c63430007060033a264697066735822122064046fcc1b7156d010b2850a0d22de0c4acab399176ca421eac459ddcde9d72d64736f6c63430007060033",
+    "deployedBytecode": "6080604052600436106100295760003560e01c806386e68b901461002e5780639436202614610064575b600080fd5b34801561003a57600080fd5b5061004e6100493660046102c1565b610079565b60405161005b91906102d9565b60405180910390f35b6100776100723660046101bf565b6100a3565b005b6000818154811061008957600080fd5b6000918252602090912001546001600160a01b0316905081565b6000346040516100b29061014d565b6040518091039082f09050801580156100cf573d6000803e3d6000fd5b50600080546001810182558180527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319166001600160a01b038416908117909155604051929350917fe4a31ef77e86b8f2bb7fb6155fa7ed2b27d5bfff238069f816cd02b9d30212e19190a25050505050565b6105d88061031283390190565b600082601f83011261016a578081fd5b813567ffffffffffffffff81111561017e57fe5b610191601f8201601f19166020016102ed565b8181528460208386010111156101a5578283fd5b816020850160208301379081016020019190915292915050565b600080600080608085870312156101d4578384fd5b843567ffffffffffffffff808211156101eb578586fd5b818701915087601f8301126101fe578586fd5b813560208282111561020c57fe5b61021981828402016102ed565b828152818101908583018a5b8581101561024e5761023c8e8684358b010161015a565b84529284019290840190600101610225565b50909950505088013592505080821115610266578485fd5b6102728883890161015a565b94506040870135915080821115610287578384fd5b6102938883890161015a565b935060608701359150808211156102a8578283fd5b506102b58782880161015a565b91505092959194509250565b6000602082840312156102d2578081fd5b5035919050565b6001600160a01b0391909116815260200190565b60405181810167ffffffffffffffff8111828210171561030957fe5b60405291905056fe6080604052600061000e61005d565b600080546001600160a01b0319166001600160a01b0383169081178255604051929350917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350610061565b3390565b610568806100706000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c8063715018a61461005c5780638da5cb5b14610066578063c0e9d8e814610084578063dace9f7f1461009a578063f2fde38b146100ad575b600080fd5b6100646100c0565b005b61006e61017e565b60405161007b9190610408565b60405180910390f35b61008c61018d565b60405161007b92919061041c565b6100646100a83660046103da565b61026e565b6100646100bb3660046103da565b6102c2565b6100c86103d6565b6001600160a01b03166100d961017e565b6001600160a01b031614610134576040805162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031690565b6060600060034781805480602002602001604051908101604052809291908181526020016000905b828210156102605760008481526020908190208301805460408051601f600260001961010060018716150201909416939093049283018590048502810185019091528181529283018282801561024c5780601f106102215761010080835404028352916020019161024c565b820191906000526020600020905b81548152906001019060200180831161022f57829003601f168201915b5050505050815260200190600101906101b5565b505050509150915091509091565b61708060015442031161029c5760405162461bcd60e51b8152600401610293906104ba565b60405180910390fd5b600280546001600160a01b0319166001600160a01b039290921691909117905542600155565b6102ca6103d6565b6001600160a01b03166102db61017e565b6001600160a01b031614610336576040805162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b6001600160a01b03811661037b5760405162461bcd60e51b815260040180806020018281038252602681526020018061050d6026913960400191505060405180910390fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b3390565b6000602082840312156103eb578081fd5b81356001600160a01b0381168114610401578182fd5b9392505050565b6001600160a01b0391909116815260200190565b60006040820160408352808551808352606085019150602092506060838202860101838801855b838110156104a857878303605f1901855281518051808552885b81811015610478578281018901518682018a0152880161045d565b8181111561048857898983880101525b5095870195601f01601f1916939093018601925090850190600101610443565b50509290940194909452949350505050565b60208082526032908201527f5468697320776f726b2069732063757272656e746c7920726573657276656420604082015271313c9030b737ba3432b9103bb7b935b2b91760711b60608201526080019056fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a2646970667358221220ae7f2cdb65fbefe9ee11e1a2cf87c23cc9e349f08474dca7f27eecfb9dc8498664736f6c63430007060033a264697066735822122064046fcc1b7156d010b2850a0d22de0c4acab399176ca421eac459ddcde9d72d64736f6c63430007060033",
+    "sourceMap": "116:476:1:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "116:476:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;144:23;;;;;;;;;;-1:-1:-1;144:23:1;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;218:371;;;;;;:::i;:::-;;:::i;:::-;;144:23;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;144:23:1;;-1:-1:-1;144:23:1;:::o;218:371::-;470:13;506:9;486:32;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;525:7:1;:20;;;;;;;;;;;;;;-1:-1:-1;;;;;;525:20:1;-1:-1:-1;;;;;525:20:1;;;;;;;;557:26;;525:20;;-1:-1:-1;525:20:1;557:26;;525:7;557:26;218:371;;;;;:::o;-1:-1:-1:-;;;;;;;;:::o;14:543:4:-;;112:3;105:4;97:6;93:17;89:27;79:2;;134:5;127;120:20;79:2;174:6;161:20;200:18;196:2;193:26;190:2;;;222:9;190:2;257:54;299:2;280:13;;-1:-1:-1;;276:27:4;305:4;272:38;257:54;:::i;:::-;336:2;327:7;320:19;382:3;375:4;370:2;362:6;358:15;354:26;351:35;348:2;;;403:5;396;389:20;348:2;472;465:4;457:6;453:17;446:4;437:7;433:18;420:55;495:16;;;513:4;491:27;484:42;;;;499:7;69:488;-1:-1:-1;;69:488:4:o;562:1597::-;;;;;790:3;778:9;769:7;765:23;761:33;758:2;;;812:6;804;797:22;758:2;857:9;844:23;886:18;927:2;919:6;916:14;913:2;;;948:6;940;933:22;913:2;991:6;980:9;976:22;966:32;;1036:7;1029:4;1025:2;1021:13;1017:27;1007:2;;1063:6;1055;1048:22;1007:2;1104;1091:16;1126:4;1149:2;1145;1142:10;1139:2;;;1155:9;1139:2;1186:36;1218:2;1213;1209;1205:11;1201:20;1186:36;:::i;:::-;1256:15;;;1287:12;;;;1319:11;;;1348:6;1363:211;1377:2;1374:1;1371:9;1363:211;;;1434:65;1491:7;1486:2;1479:3;1466:17;1462:2;1458:26;1454:35;1434:65;:::i;:::-;1422:78;;1520:12;;;;1552;;;;1395:1;1388:9;1363:211;;;-1:-1:-1;1593:5:4;;-1:-1:-1;;;1636:18:4;;1623:32;;-1:-1:-1;;1667:16:4;;;1664:2;;;1701:6;1693;1686:22;1664:2;1729:54;1775:7;1764:8;1753:9;1749:24;1729:54;:::i;:::-;1719:64;;1836:2;1825:9;1821:18;1808:32;1792:48;;1865:2;1855:8;1852:16;1849:2;;;1886:6;1878;1871:22;1849:2;1914:54;1960:7;1949:8;1938:9;1934:24;1914:54;:::i;:::-;1904:64;;2021:2;2010:9;2006:18;1993:32;1977:48;;2050:2;2040:8;2037:16;2034:2;;;2071:6;2063;2056:22;2034:2;;2099:54;2145:7;2134:8;2123:9;2119:24;2099:54;:::i;:::-;2089:64;;;748:1411;;;;;;;:::o;2164:190::-;;2276:2;2264:9;2255:7;2251:23;2247:32;2244:2;;;2297:6;2289;2282:22;2244:2;-1:-1:-1;2325:23:4;;2234:120;-1:-1:-1;2234:120:4:o;2359:216::-;-1:-1:-1;;;;;2536:32:4;;;;2518:51;;2506:2;2491:18;;2473:102::o;2580:242::-;2650:2;2644:9;2680:17;;;2727:18;2712:34;;2748:22;;;2709:62;2706:2;;;2774:9;2706:2;2801;2794:22;2624:198;;-1:-1:-1;2624:198:4:o",
+    "sourcePath": "e:/cryptodev/sozu/contracts/SurveyFactory.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.7.6+commit.7338295f"
+    },
+    "ast": {
+        "absolutePath": "e:/cryptodev/sozu/contracts/SurveyFactory.sol",
+        "exportedSymbols": {
+            "Context": [
+                249
+            ],
+            "Ownable": [
+                226
+            ],
+            "Survey": [
+                68
+            ],
+            "SurveyFactory": [
+                116
+            ]
+        },
+        "id": 117,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 70,
+                "literals": [
+                    "abicoder",
+                    "v2"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "33:19:1"
+            },
+            {
+                "id": 71,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.4",
+                    ".22",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "54:32:1"
+            },
+            {
+                "absolutePath": "e:/cryptodev/sozu/contracts/Survey.sol",
+                "file": "./Survey.sol",
+                "id": 72,
+                "nodeType": "ImportDirective",
+                "scope": 117,
+                "sourceUnit": 69,
+                "src": "90:22:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "contractDependencies": [
+                    68
+                ],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 116,
+                "linearizedBaseContracts": [
+                    116
+                ],
+                "name": "SurveyFactory",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "86e68b90",
+                        "id": 75,
+                        "mutability": "mutable",
+                        "name": "surveys",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 116,
+                        "src": "144:23:1",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_contract$_Survey_$68_$dyn_storage",
+                            "typeString": "contract Survey[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 73,
+                                "name": "Survey",
+                                "nodeType": "UserDefinedTypeName",
+                                "referencedDeclaration": 68,
+                                "src": "144:6:1",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_Survey_$68",
+                                    "typeString": "contract Survey"
+                                }
+                            },
+                            "id": 74,
+                            "nodeType": "ArrayTypeName",
+                            "src": "144:8:1",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_contract$_Survey_$68_$dyn_storage_ptr",
+                                "typeString": "contract Survey[]"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "anonymous": false,
+                        "id": 79,
+                        "name": "NewSurvey",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 78,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 77,
+                                    "indexed": true,
+                                    "mutability": "mutable",
+                                    "name": "survey",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 79,
+                                    "src": "188:22:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 76,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "188:7:1",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "187:24:1"
+                        },
+                        "src": "172:40:1"
+                    },
+                    {
+                        "body": {
+                            "id": 114,
+                            "nodeType": "Block",
+                            "src": "361:228:1",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        92
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 92,
+                                            "mutability": "mutable",
+                                            "name": "survey",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 114,
+                                            "src": "470:13:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_Survey_$68",
+                                                "typeString": "contract Survey"
+                                            },
+                                            "typeName": {
+                                                "id": 91,
+                                                "name": "Survey",
+                                                "nodeType": "UserDefinedTypeName",
+                                                "referencedDeclaration": 68,
+                                                "src": "470:6:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_Survey_$68",
+                                                    "typeString": "contract Survey"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 100,
+                                    "initialValue": {
+                                        "arguments": [],
+                                        "expression": {
+                                            "argumentTypes": [],
+                                            "expression": {
+                                                "argumentTypes": [],
+                                                "components": [
+                                                    {
+                                                        "id": 94,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "NewExpression",
+                                                        "src": "487:10:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_creation_payable$__$returns$_t_contract$_Survey_$68_$",
+                                                            "typeString": "function () payable returns (contract Survey)"
+                                                        },
+                                                        "typeName": {
+                                                            "id": 93,
+                                                            "name": "Survey",
+                                                            "nodeType": "UserDefinedTypeName",
+                                                            "referencedDeclaration": 68,
+                                                            "src": "491:6:1",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_contract$_Survey_$68",
+                                                                "typeString": "contract Survey"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "id": 95,
+                                                "isConstant": false,
+                                                "isInlineArray": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "nodeType": "TupleExpression",
+                                                "src": "486:12:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_function_creation_payable$__$returns$_t_contract$_Survey_$68_$",
+                                                    "typeString": "function () payable returns (contract Survey)"
+                                                }
+                                            },
+                                            "id": 98,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "names": [
+                                                "value"
+                                            ],
+                                            "nodeType": "FunctionCallOptions",
+                                            "options": [
+                                                {
+                                                    "expression": {
+                                                        "id": 96,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967281,
+                                                        "src": "506:3:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 97,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "value",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "506:9:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                }
+                                            ],
+                                            "src": "486:30:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_creation_payable$__$returns$_t_contract$_Survey_$68_$value",
+                                                "typeString": "function () payable returns (contract Survey)"
+                                            }
+                                        },
+                                        "id": 99,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "486:32:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_Survey_$68",
+                                            "typeString": "contract Survey"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "470:48:1"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "id": 104,
+                                                "name": "survey",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 92,
+                                                "src": "538:6:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_Survey_$68",
+                                                    "typeString": "contract Survey"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_contract$_Survey_$68",
+                                                    "typeString": "contract Survey"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "id": 101,
+                                                "name": "surveys",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 75,
+                                                "src": "525:7:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_contract$_Survey_$68_$dyn_storage",
+                                                    "typeString": "contract Survey[] storage ref"
+                                                }
+                                            },
+                                            "id": 103,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "push",
+                                            "nodeType": "MemberAccess",
+                                            "src": "525:12:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_arraypush_nonpayable$_t_contract$_Survey_$68_$returns$__$",
+                                                "typeString": "function (contract Survey)"
+                                            }
+                                        },
+                                        "id": 105,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "525:20:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 106,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "525:20:1"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "arguments": [
+                                                    {
+                                                        "id": 110,
+                                                        "name": "survey",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 92,
+                                                        "src": "575:6:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_contract$_Survey_$68",
+                                                            "typeString": "contract Survey"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_contract$_Survey_$68",
+                                                            "typeString": "contract Survey"
+                                                        }
+                                                    ],
+                                                    "id": 109,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "nodeType": "ElementaryTypeNameExpression",
+                                                    "src": "567:7:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_address_$",
+                                                        "typeString": "type(address)"
+                                                    },
+                                                    "typeName": {
+                                                        "id": 108,
+                                                        "name": "address",
+                                                        "nodeType": "ElementaryTypeName",
+                                                        "src": "567:7:1",
+                                                        "typeDescriptions": {}
+                                                    }
+                                                },
+                                                "id": 111,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "567:15:1",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "id": 107,
+                                            "name": "NewSurvey",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 79,
+                                            "src": "557:9:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                                                "typeString": "function (address)"
+                                            }
+                                        },
+                                        "id": 112,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "557:26:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 113,
+                                    "nodeType": "EmitStatement",
+                                    "src": "552:31:1"
+                                }
+                            ]
+                        },
+                        "functionSelector": "94362026",
+                        "id": 115,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "createAndEndow",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 89,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 82,
+                                    "mutability": "mutable",
+                                    "name": "_cids",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 115,
+                                    "src": "242:21:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_array$_t_string_memory_ptr_$dyn_memory_ptr",
+                                        "typeString": "string[]"
+                                    },
+                                    "typeName": {
+                                        "baseType": {
+                                            "id": 80,
+                                            "name": "string",
+                                            "nodeType": "ElementaryTypeName",
+                                            "src": "242:6:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_storage_ptr",
+                                                "typeString": "string"
+                                            }
+                                        },
+                                        "id": 81,
+                                        "nodeType": "ArrayTypeName",
+                                        "src": "242:8:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_string_storage_$dyn_storage_ptr",
+                                            "typeString": "string[]"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 84,
+                                    "mutability": "mutable",
+                                    "name": "_surveyType",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 115,
+                                    "src": "265:25:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 83,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "265:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 86,
+                                    "mutability": "mutable",
+                                    "name": "_surveyName",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 115,
+                                    "src": "292:25:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 85,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "292:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 88,
+                                    "mutability": "mutable",
+                                    "name": "_surveyDesc",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 115,
+                                    "src": "319:25:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 87,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "319:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "241:104:1"
+                        },
+                        "returnParameters": {
+                            "id": 90,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "361:0:1"
+                        },
+                        "scope": 116,
+                        "src": "218:371:1",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 117,
+                "src": "116:476:1"
+            }
+        ],
+        "src": "33:561:1"
+    },
+    "functionHashes": {
+        "createAndEndow(string[],string,string,string)": "94362026",
+        "surveys(uint256)": "86e68b90"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "467000",
+            "executionCost": "499",
+            "totalCost": "467499"
+        },
+        "external": {
+            "createAndEndow(string[],string,string,string)": "infinite",
+            "surveys(uint256)": "2016"
+        }
+    }
+}

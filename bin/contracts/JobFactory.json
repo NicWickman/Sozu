@@ -1,0 +1,603 @@
+{
+    "contractName": "JobFactory",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "job",
+                    "type": "address"
+                }
+            ],
+            "name": "NewJob",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_jobDesc",
+                    "type": "string"
+                }
+            ],
+            "name": "createAndEndow",
+            "outputs": [
+                {
+                    "internalType": "contract Job",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "jobs",
+            "outputs": [
+                {
+                    "internalType": "contract Job",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"job\",\"type\":\"address\"}],\"name\":\"NewJob\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_jobDesc\",\"type\":\"string\"}],\"name\":\"createAndEndow\",\"outputs\":[{\"internalType\":\"contract Job\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"jobs\",\"outputs\":[{\"internalType\":\"contract Job\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/cryptodev/sozu/contracts/JobFactory.sol\":\"JobFactory\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/cryptodev/sozu/contracts/Job.sol\":{\"keccak256\":\"0x0e974af4594ef8143215a45b816b5748240e4dea360c35e1fec1e451d7d7403b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9117a93cd5f4690b1a1bf39d785517c4bee3518ad2c293cd8828535c5aca41d2\",\"dweb:/ipfs/QmXQysjwXFhXxj13qdVuKupdsXxqAuHqfwivVoE3imCmUy\"]},\"e:/cryptodev/sozu/contracts/JobFactory.sol\":{\"keccak256\":\"0xb12c052363020115b6c8cec304ff2cf4aacca3d09ed27f69f8f0d35f044f905d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://85f30f28abcc4c325df84bd38b93599c178087dbefe45c65f9c399ea82d062b2\",\"dweb:/ipfs/QmZ2dqagRLxVWPY1288WWqdFzuTGzgBRPcyZyALbzRre1H\"]},\"e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x15e2d5bd4c28a88548074c54d220e8086f638a71ed07e6b3ba5a70066fcf458d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://90faf5851c02f9bd42c5bfb54d4f0421a2612f50ab80b2c4fa24fa3792071cc2\",\"dweb:/ipfs/QmRGM4F2PcGVF85aTfaA9YBhCHHDqrMhRjyp6fGeBTtirb\"]},\"e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b50610498806100206000396000f3fe6080604052600436106100295760003560e01c8063180aedf31461002e5780633ef846b914610064575b600080fd5b34801561003a57600080fd5b5061004e6100493660046101f6565b610077565b60405161005b919061020e565b60405180910390f35b61004e610072366004610161565b6100a1565b6000818154811061008757600080fd5b6000918252602090912001546001600160a01b0316905081565b600080826040516100b190610154565b6100bb9190610222565b604051809103906000f0801580156100d7573d6000803e3d6000fd5b50600080546001810182558180527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319166001600160a01b038416908117909155604051929350917f43de6115edfb07548ddf15e0282a2f1488ade4a05df1ff38d055076a6a71c5699190a292915050565b6101ed8061027683390190565b60006020808385031215610173578182fd5b823567ffffffffffffffff8082111561018a578384fd5b818501915085601f83011261019d578384fd5b8135818111156101a957fe5b604051601f8201601f19168101850183811182821017156101c657fe5b60405281815283820185018810156101dc578586fd5b818585018683013790810190930193909352509392505050565b600060208284031215610207578081fd5b5035919050565b6001600160a01b0391909116815260200190565b6000602080835283518082850152825b8181101561024e57858101830151858201604001528201610232565b8181111561025f5783604083870101525b50601f01601f191692909201604001939250505056fe608060405234801561001057600080fd5b506040516101ed3803806101ed83398101604081905261002f916100ea565b8051610042906000906020840190610049565b50506101a0565b828054600181600116156101000203166002900490600052602060002090601f01602090048101928261007f57600085556100c5565b82601f1061009857805160ff19168380011785556100c5565b828001600101855582156100c5579182015b828111156100c55782518255916020019190600101906100aa565b506100d19291506100d5565b5090565b5b808211156100d157600081556001016100d6565b600060208083850312156100fc578182fd5b82516001600160401b0380821115610112578384fd5b818501915085601f830112610125578384fd5b81518181111561013157fe5b604051601f8201601f191681018501838111828210171561014e57fe5b6040528181528382018501881015610164578586fd5b8592505b818310156101855783830185015181840186015291840191610168565b8183111561019557858583830101525b979650505050505050565b603f806101ae6000396000f3fe6080604052600080fdfea2646970667358221220fa3d8b6b553ff7362760af1d09917f16ba2ae86309b6c633ad883c0ef36703ab64736f6c63430007060033a2646970667358221220801e21d73eb2fbe03f30e44e038e9c71c94364f1b81b6fa219263082ffcc6f4f64736f6c63430007060033",
+    "deployedBytecode": "6080604052600436106100295760003560e01c8063180aedf31461002e5780633ef846b914610064575b600080fd5b34801561003a57600080fd5b5061004e6100493660046101f6565b610077565b60405161005b919061020e565b60405180910390f35b61004e610072366004610161565b6100a1565b6000818154811061008757600080fd5b6000918252602090912001546001600160a01b0316905081565b600080826040516100b190610154565b6100bb9190610222565b604051809103906000f0801580156100d7573d6000803e3d6000fd5b50600080546001810182558180527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319166001600160a01b038416908117909155604051929350917f43de6115edfb07548ddf15e0282a2f1488ade4a05df1ff38d055076a6a71c5699190a292915050565b6101ed8061027683390190565b60006020808385031215610173578182fd5b823567ffffffffffffffff8082111561018a578384fd5b818501915085601f83011261019d578384fd5b8135818111156101a957fe5b604051601f8201601f19168101850183811182821017156101c657fe5b60405281815283820185018810156101dc578586fd5b818585018683013790810190930193909352509392505050565b600060208284031215610207578081fd5b5035919050565b6001600160a01b0391909116815260200190565b6000602080835283518082850152825b8181101561024e57858101830151858201604001528201610232565b8181111561025f5783604083870101525b50601f01601f191692909201604001939250505056fe608060405234801561001057600080fd5b506040516101ed3803806101ed83398101604081905261002f916100ea565b8051610042906000906020840190610049565b50506101a0565b828054600181600116156101000203166002900490600052602060002090601f01602090048101928261007f57600085556100c5565b82601f1061009857805160ff19168380011785556100c5565b828001600101855582156100c5579182015b828111156100c55782518255916020019190600101906100aa565b506100d19291506100d5565b5090565b5b808211156100d157600081556001016100d6565b600060208083850312156100fc578182fd5b82516001600160401b0380821115610112578384fd5b818501915085601f830112610125578384fd5b81518181111561013157fe5b604051601f8201601f191681018501838111828210171561014e57fe5b6040528181528382018501881015610164578586fd5b8592505b818310156101855783830185015181840186015291840191610168565b8183111561019557858583830101525b979650505050505050565b603f806101ae6000396000f3fe6080604052600080fdfea2646970667358221220fa3d8b6b553ff7362760af1d09917f16ba2ae86309b6c633ad883c0ef36703ab64736f6c63430007060033a2646970667358221220801e21d73eb2fbe03f30e44e038e9c71c94364f1b81b6fa219263082ffcc6f4f64736f6c63430007060033",
+    "sourceMap": "113:424:1:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "113:424:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;140:17;;;;;;;;;;-1:-1:-1;140:17:1;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;206:328;;;;;;:::i;:::-;;:::i;140:17::-;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;140:17:1;;-1:-1:-1;140:17:1;:::o;206:328::-;401:3;417:7;435:8;427:17;;;;;:::i;:::-;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;455:4:1;:14;;;;;;;;;;;;;;-1:-1:-1;;;;;;455:14:1;-1:-1:-1;;;;;455:14:1;;;;;;;;485:20;;455:14;;-1:-1:-1;455:14:1;485:20;;455:4;485:20;523:3;206:328;-1:-1:-1;;206:328:1:o;-1:-1:-1:-;;;;;;;;:::o;14:940:4:-;;114:2;157;145:9;136:7;132:23;128:32;125:2;;;178:6;170;163:22;125:2;223:9;210:23;252:18;293:2;285:6;282:14;279:2;;;314:6;306;299:22;279:2;357:6;346:9;342:22;332:32;;402:7;395:4;391:2;387:13;383:27;373:2;;429:6;421;414:22;373:2;470;457:16;492:2;488;485:10;482:2;;;498:9;482:2;538;532:9;607:2;588:13;;-1:-1:-1;;584:27:4;572:40;;568:49;;632:18;;;652:22;;;629:46;626:2;;;678:9;626:2;705;698:22;729:18;;;766:11;;;762:20;;759:33;-1:-1:-1;756:2:4;;;810:6;802;795:22;756:2;871;866;862;858:11;853:2;845:6;841:15;828:46;894:15;;;890:24;;;883:40;;;;-1:-1:-1;898:6:4;94:860;-1:-1:-1;;;94:860:4:o;959:190::-;;1071:2;1059:9;1050:7;1046:23;1042:32;1039:2;;;1092:6;1084;1077:22;1039:2;-1:-1:-1;1120:23:4;;1029:120;-1:-1:-1;1029:120:4:o;1154:213::-;-1:-1:-1;;;;;1328:32:4;;;;1310:51;;1298:2;1283:18;;1265:102::o;1372:603::-;;1513:2;1542;1531:9;1524:21;1574:6;1568:13;1617:6;1612:2;1601:9;1597:18;1590:34;1642:4;1655:140;1669:6;1666:1;1663:13;1655:140;;;1764:14;;;1760:23;;1754:30;1730:17;;;1749:2;1726:26;1719:66;1684:10;;1655:140;;;1813:6;1810:1;1807:13;1804:2;;;1883:4;1878:2;1869:6;1858:9;1854:22;1850:31;1843:45;1804:2;-1:-1:-1;1959:2:4;1938:15;-1:-1:-1;;1934:29:4;1919:45;;;;1966:2;1915:54;;1493:482;-1:-1:-1;;;1493:482:4:o",
+    "sourcePath": "e:/cryptodev/sozu/contracts/JobFactory.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.7.6+commit.7338295f"
+    },
+    "ast": {
+        "absolutePath": "e:/cryptodev/sozu/contracts/JobFactory.sol",
+        "exportedSymbols": {
+            "Context": [
+                191
+            ],
+            "Job": [
+                16
+            ],
+            "JobFactory": [
+                58
+            ],
+            "Ownable": [
+                168
+            ]
+        },
+        "id": 59,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 18,
+                "literals": [
+                    "abicoder",
+                    "v2"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "33:19:1"
+            },
+            {
+                "id": 19,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.4",
+                    ".22",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "54:32:1"
+            },
+            {
+                "absolutePath": "e:/cryptodev/sozu/contracts/Job.sol",
+                "file": "./Job.sol",
+                "id": 20,
+                "nodeType": "ImportDirective",
+                "scope": 59,
+                "sourceUnit": 17,
+                "src": "90:19:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "contractDependencies": [
+                    16
+                ],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 58,
+                "linearizedBaseContracts": [
+                    58
+                ],
+                "name": "JobFactory",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "180aedf3",
+                        "id": 23,
+                        "mutability": "mutable",
+                        "name": "jobs",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 58,
+                        "src": "140:17:1",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_contract$_Job_$16_$dyn_storage",
+                            "typeString": "contract Job[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 21,
+                                "name": "Job",
+                                "nodeType": "UserDefinedTypeName",
+                                "referencedDeclaration": 16,
+                                "src": "140:3:1",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_Job_$16",
+                                    "typeString": "contract Job"
+                                }
+                            },
+                            "id": 22,
+                            "nodeType": "ArrayTypeName",
+                            "src": "140:5:1",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_contract$_Job_$16_$dyn_storage_ptr",
+                                "typeString": "contract Job[]"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "anonymous": false,
+                        "id": 27,
+                        "name": "NewJob",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 26,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 25,
+                                    "indexed": true,
+                                    "mutability": "mutable",
+                                    "name": "job",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 27,
+                                    "src": "177:19:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 24,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "177:7:1",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "176:21:1"
+                        },
+                        "src": "164:34:1"
+                    },
+                    {
+                        "body": {
+                            "id": 56,
+                            "nodeType": "Block",
+                            "src": "406:128:1",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        35
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 35,
+                                            "mutability": "mutable",
+                                            "name": "job",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 56,
+                                            "src": "417:7:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_Job_$16",
+                                                "typeString": "contract Job"
+                                            },
+                                            "typeName": {
+                                                "id": 34,
+                                                "name": "Job",
+                                                "nodeType": "UserDefinedTypeName",
+                                                "referencedDeclaration": 16,
+                                                "src": "417:3:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_Job_$16",
+                                                    "typeString": "contract Job"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 40,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "id": 38,
+                                                "name": "_jobDesc",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 29,
+                                                "src": "435:8:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                }
+                                            ],
+                                            "id": 37,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "nodeType": "NewExpression",
+                                            "src": "427:7:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_creation_nonpayable$_t_string_memory_ptr_$returns$_t_contract$_Job_$16_$",
+                                                "typeString": "function (string memory) returns (contract Job)"
+                                            },
+                                            "typeName": {
+                                                "id": 36,
+                                                "name": "Job",
+                                                "nodeType": "UserDefinedTypeName",
+                                                "referencedDeclaration": 16,
+                                                "src": "431:3:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_Job_$16",
+                                                    "typeString": "contract Job"
+                                                }
+                                            }
+                                        },
+                                        "id": 39,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "427:17:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_Job_$16",
+                                            "typeString": "contract Job"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "417:27:1"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "id": 44,
+                                                "name": "job",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 35,
+                                                "src": "465:3:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_Job_$16",
+                                                    "typeString": "contract Job"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_contract$_Job_$16",
+                                                    "typeString": "contract Job"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "id": 41,
+                                                "name": "jobs",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 23,
+                                                "src": "455:4:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_contract$_Job_$16_$dyn_storage",
+                                                    "typeString": "contract Job[] storage ref"
+                                                }
+                                            },
+                                            "id": 43,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "push",
+                                            "nodeType": "MemberAccess",
+                                            "src": "455:9:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_arraypush_nonpayable$_t_contract$_Job_$16_$returns$__$",
+                                                "typeString": "function (contract Job)"
+                                            }
+                                        },
+                                        "id": 45,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "455:14:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 46,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "455:14:1"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "arguments": [
+                                                    {
+                                                        "id": 50,
+                                                        "name": "job",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 35,
+                                                        "src": "500:3:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_contract$_Job_$16",
+                                                            "typeString": "contract Job"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_contract$_Job_$16",
+                                                            "typeString": "contract Job"
+                                                        }
+                                                    ],
+                                                    "id": 49,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "nodeType": "ElementaryTypeNameExpression",
+                                                    "src": "492:7:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_address_$",
+                                                        "typeString": "type(address)"
+                                                    },
+                                                    "typeName": {
+                                                        "id": 48,
+                                                        "name": "address",
+                                                        "nodeType": "ElementaryTypeName",
+                                                        "src": "492:7:1",
+                                                        "typeDescriptions": {}
+                                                    }
+                                                },
+                                                "id": 51,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "492:12:1",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "id": 47,
+                                            "name": "NewJob",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 27,
+                                            "src": "485:6:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                                                "typeString": "function (address)"
+                                            }
+                                        },
+                                        "id": 52,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "485:20:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 53,
+                                    "nodeType": "EmitStatement",
+                                    "src": "480:25:1"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 54,
+                                        "name": "job",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 35,
+                                        "src": "523:3:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_Job_$16",
+                                            "typeString": "contract Job"
+                                        }
+                                    },
+                                    "functionReturnParameters": 33,
+                                    "id": 55,
+                                    "nodeType": "Return",
+                                    "src": "516:10:1"
+                                }
+                            ]
+                        },
+                        "functionSelector": "3ef846b9",
+                        "id": 57,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "createAndEndow",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 30,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 29,
+                                    "mutability": "mutable",
+                                    "name": "_jobDesc",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 57,
+                                    "src": "347:22:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 28,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "347:6:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "229:147:1"
+                        },
+                        "returnParameters": {
+                            "id": 33,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 32,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 57,
+                                    "src": "401:3:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_Job_$16",
+                                        "typeString": "contract Job"
+                                    },
+                                    "typeName": {
+                                        "id": 31,
+                                        "name": "Job",
+                                        "nodeType": "UserDefinedTypeName",
+                                        "referencedDeclaration": 16,
+                                        "src": "401:3:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_Job_$16",
+                                            "typeString": "contract Job"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "400:5:1"
+                        },
+                        "scope": 58,
+                        "src": "206:328:1",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 59,
+                "src": "113:424:1"
+            }
+        ],
+        "src": "33:506:1"
+    },
+    "functionHashes": {
+        "createAndEndow(string)": "3ef846b9",
+        "jobs(uint256)": "180aedf3"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "235200",
+            "executionCost": "275",
+            "totalCost": "235475"
+        },
+        "external": {
+            "createAndEndow(string)": "infinite",
+            "jobs(uint256)": "2016"
+        }
+    }
+}

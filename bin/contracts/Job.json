@@ -1,0 +1,1035 @@
+{
+    "contractName": "Job",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "digest",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "hashFunction",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "size",
+                            "type": "uint8"
+                        }
+                    ],
+                    "internalType": "struct Job.Multihash[]",
+                    "name": "_taskCids",
+                    "type": "tuple[]"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_jobType",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_jobName",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_jobDesc",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "payable",
+            "type": "constructor"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"digest\",\"type\":\"bytes32\"},{\"internalType\":\"uint8\",\"name\":\"hashFunction\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"size\",\"type\":\"uint8\"}],\"internalType\":\"struct Job.Multihash[]\",\"name\":\"_taskCids\",\"type\":\"tuple[]\"},{\"internalType\":\"string\",\"name\":\"_jobType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_jobName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_jobDesc\",\"type\":\"string\"}],\"stateMutability\":\"payable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/cryptodev/sozu/contracts/Job.sol\":\"Job\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/cryptodev/sozu/contracts/Job.sol\":{\"keccak256\":\"0xc54a7901f80b38d8201ff8cbb66b22236406dc7a1d4e047349ce257ac1f0c001\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2336578162043467686d0f3c7b6c21acd9ace08e3431773b9cc21df62dbed488\",\"dweb:/ipfs/QmXsU74oTvzDDD2Zpnu4MqHk4g96ryybU1aymt1ruoACmm\"]},\"e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]}},\"version\":1}",
+    "bytecode": "6080604052604051610503380380610503833981016040819052610022916102b1565b60005b8451811015610135576000604051806060016040528087848151811061005b57634e487b7160e01b600052603260045260246000fd5b602002602001015160000151815260200187848151811061008c57634e487b7160e01b600052603260045260246000fd5b60200260200101516020015160ff1681526020018784815181106100c057634e487b7160e01b600052603260045260246000fd5b60209081029190910181015160409081015160ff908116909352845460018082018755600096875295839020855160029092020190815591840151919094018054939094015160ff199093169082161761ff00191661010092909116919091021790558061012d81610479565b915050610025565b50825161014990600190602086019061017b565b50815161015d90600290602085019061017b565b50805161017190600390602084019061017b565b50505050506104b6565b8280546101879061043e565b90600052602060002090601f0160209004810192826101a957600085556101ef565b82601f106101c257805160ff19168380011785556101ef565b828001600101855582156101ef579182015b828111156101ef5782518255916020019190600101906101d4565b506101fb9291506101ff565b5090565b5b808211156101fb5760008155600101610200565b600082601f830112610224578081fd5b81516001600160401b0381111561023d5761023d6104a0565b6020610251601f8301601f19168201610415565b8281528582848701011115610264578384fd5b835b83811015610281578581018301518282018401528201610266565b8381111561029157848385840101525b5095945050505050565b805160ff811681146102ac57600080fd5b919050565b600080600080608085870312156102c6578384fd5b84516001600160401b03808211156102dc578586fd5b818701915087601f8301126102ef578586fd5b8151602082821115610303576103036104a0565b6103108182840201610415565b828152818101908583016060808602880185018e101561032e578b8cfd5b8b97505b858810156103a05780828f031215610348578b8cfd5b604080518281018181108a82111715610363576103636104a0565b82528351815261037487850161029b565b8782015261038382850161029b565b918101919091528452600197909701969284019290810190610332565b829b50848d01519750868811156103b5578a8bfd5b6103c18e898f01610214565b9a5060408d01519750868811156103d657898afd5b6103e28e898f01610214565b9950808d01519750505050505050808211156103fc578283fd5b5061040987828801610214565b91505092959194509250565b6040518181016001600160401b0381118282101715610436576104366104a0565b604052919050565b60028104600182168061045257607f821691505b6020821081141561047357634e487b7160e01b600052602260045260246000fd5b50919050565b600060001982141561049957634e487b7160e01b81526011600452602481fd5b5060010190565b634e487b7160e01b600052604160045260246000fd5b603f806104c46000396000f3fe6080604052600080fdfea2646970667358221220d8f7027ac885ce0f7a648a428b86138a7c9dd1762eb3ffffadde50f61ee1adc564736f6c63430008000033",
+    "deployedBytecode": "6080604052600080fdfea2646970667358221220d8f7027ac885ce0f7a648a428b86138a7c9dd1762eb3ffffadde50f61ee1adc564736f6c63430008000033",
+    "sourceMap": "162:774:0:-:0;;;382:551;;;;;;;;;;;;;;;;;;:::i;:::-;563:9;558:279;582:9;:16;578:1;:20;558:279;;;620:8;652:158;;;;;;;;684:9;694:1;684:12;;;;;;-1:-1:-1;;;684:12:0;;;;;;;;;;;;;;;:19;;;652:158;;;;726:9;736:1;726:12;;;;;;-1:-1:-1;;;726:12:0;;;;;;;;;;;;;;;:25;;;652:158;;;;;;774:9;784:1;774:12;;;;;;-1:-1:-1;;;774:12:0;;;;;;;;;;;;;;;;;;;;:17;;;;;652:158;;;;;;;620:205;;;;;;;;-1:-1:-1;620:205:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;620:205:0;;;;;;;-1:-1:-1;;620:205:0;;;;;;;;;;;;;600:3;;;;:::i;:::-;;;;558:279;;;-1:-1:-1;849:18:0;;;;:7;;:18;;;;;:::i;:::-;-1:-1:-1;878:18:0;;;;:7;;:18;;;;;:::i;:::-;-1:-1:-1;907:18:0;;;;:7;;:18;;;;;:::i;:::-;;382:551;;;;162:774;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;162:774:0;;;-1:-1:-1;162:774:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;14:720:3;;123:3;116:4;108:6;104:17;100:27;90:2;;145:5;138;131:20;90:2;172:13;;-1:-1:-1;;;;;197:26:3;;194:2;;;226:18;;:::i;:::-;265:4;293:52;335:2;316:13;;-1:-1:-1;;312:27:3;308:36;;293:52;:::i;:::-;370:2;361:7;354:19;414:3;409:2;404;396:6;392:15;388:24;385:33;382:2;;;435:5;428;421:20;382:2;461:5;475:134;489:2;486:1;483:9;475:134;;;578:14;;;574:23;;568:30;546:15;;;542:24;;535:64;500:10;;475:134;;;627:2;624:1;621:9;618:2;;;687:5;682:2;677;668:7;664:16;660:25;653:40;618:2;-1:-1:-1;721:7:3;80:654;-1:-1:-1;;;;;80:654:3:o;739:162::-;818:13;;871:4;860:16;;850:27;;840:2;;891:1;888;881:12;840:2;799:102;;;:::o;906:2172::-;;;;;1160:3;1148:9;1139:7;1135:23;1131:33;1128:2;;;1182:6;1174;1167:22;1128:2;1214:16;;-1:-1:-1;;;;;1279:14:3;;;1276:2;;;1311:6;1303;1296:22;1276:2;1354:6;1343:9;1339:22;1329:32;;1399:7;1392:4;1388:2;1384:13;1380:27;1370:2;;1426:6;1418;1411:22;1370:2;1460;1454:9;1482:4;1505:2;1501;1498:10;1495:2;;;1511:18;;:::i;:::-;1551:36;1583:2;1578;1574;1570:11;1566:20;1551:36;:::i;:::-;1621:15;;;1652:12;;;;1684:11;;;1714:4;1745:11;;;1737:20;;1733:29;;1730:42;-1:-1:-1;1727:2:3;;;1790:6;1782;1775:22;1727:2;1817:6;1808:15;;1832:649;1846:2;1843:1;1840:9;1832:649;;;1917:2;1911:3;1902:7;1898:17;1894:26;1891:2;;;1938:6;1930;1923:22;1891:2;1970;2005;1999:9;2051:2;2043:6;2039:15;2108:6;2096:10;2093:22;2088:2;2076:10;2073:18;2070:46;2067:2;;;2119:18;;:::i;:::-;2152:22;;2202:10;;2187:26;;2250:43;2280:12;;;2250:43;:::i;:::-;2245:2;2237:6;2233:15;2226:68;2331:43;2370:2;2365:3;2361:12;2331:43;:::i;:::-;2314:15;;;2307:68;;;;2388:19;;1864:1;1857:9;;;;;2427:12;;;;2459;;;;1832:649;;;2500:5;2490:15;;2551:2;2540:9;2536:18;2530:25;2514:41;;2580:2;2570:8;2567:16;2564:2;;;2601:6;2593;2586:22;2564:2;2629:65;2686:7;2675:8;2664:9;2660:24;2629:65;:::i;:::-;2619:75;;2740:2;2729:9;2725:18;2719:25;2703:41;;2769:2;2759:8;2756:16;2753:2;;;2790:6;2782;2775:22;2753:2;2818:65;2875:7;2864:8;2853:9;2849:24;2818:65;:::i;:::-;2808:75;;2929:2;2918:9;2914:18;2908:25;2892:41;;;;;;;;2958:2;2948:8;2945:16;2942:2;;;2979:6;2971;2964:22;2942:2;;3007:65;3064:7;3053:8;3042:9;3038:24;3007:65;:::i;:::-;2997:75;;;1118:1960;;;;;;;:::o;3083:251::-;3153:2;3147:9;3183:17;;;-1:-1:-1;;;;;3215:34:3;;3251:22;;;3212:62;3209:2;;;3277:18;;:::i;:::-;3313:2;3306:22;3127:207;;-1:-1:-1;3127:207:3:o;3339:380::-;3424:1;3414:12;;3471:1;3461:12;;;3482:2;;3536:4;3528:6;3524:17;3514:27;;3482:2;3589;3581:6;3578:14;3558:18;3555:38;3552:2;;;3635:10;3630:3;3626:20;3623:1;3616:31;3670:4;3667:1;3660:15;3698:4;3695:1;3688:15;3552:2;;3394:325;;;:::o;3724:236::-;;-1:-1:-1;;3784:17:3;;3781:2;;;-1:-1:-1;;;3824:33:3;;3880:4;3877:1;3870:15;3910:4;3831:3;3898:17;3781:2;-1:-1:-1;3952:1:3;3941:13;;3771:189::o;3965:127::-;4026:10;4021:3;4017:20;4014:1;4007:31;4057:4;4054:1;4047:15;4081:4;4078:1;4071:15;3997:95;162:774:0;;;;;;",
+    "deployedSourceMap": "162:774:0:-:0;;;;;",
+    "sourcePath": "e:/cryptodev/sozu/contracts/Job.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.0+commit.c7dfd78e"
+    },
+    "ast": {
+        "absolutePath": "e:/cryptodev/sozu/contracts/Job.sol",
+        "exportedSymbols": {
+            "Context": [
+                212
+            ],
+            "Job": [
+                79
+            ],
+            "Ownable": [
+                189
+            ]
+        },
+        "id": 80,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "abicoder",
+                    "v2"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "33:19:0"
+            },
+            {
+                "id": 2,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.4",
+                    ".22",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "54:32:0"
+            },
+            {
+                "absolutePath": "e:/cryptodev/sozu/node_modules/@openzeppelin/contracts/access/Ownable.sol",
+                "file": "../node_modules/@openzeppelin/contracts/access/Ownable.sol",
+                "id": 3,
+                "nodeType": "ImportDirective",
+                "scope": 80,
+                "sourceUnit": 190,
+                "src": "90:68:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 79,
+                "linearizedBaseContracts": [
+                    79
+                ],
+                "name": "Job",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "canonicalName": "Job.Multihash",
+                        "id": 10,
+                        "members": [
+                            {
+                                "constant": false,
+                                "id": 5,
+                                "mutability": "mutable",
+                                "name": "digest",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 10,
+                                "src": "210:14:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bytes32",
+                                    "typeString": "bytes32"
+                                },
+                                "typeName": {
+                                    "id": 4,
+                                    "name": "bytes32",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "210:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bytes32",
+                                        "typeString": "bytes32"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 7,
+                                "mutability": "mutable",
+                                "name": "hashFunction",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 10,
+                                "src": "235:18:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint8",
+                                    "typeString": "uint8"
+                                },
+                                "typeName": {
+                                    "id": 6,
+                                    "name": "uint8",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "235:5:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 9,
+                                "mutability": "mutable",
+                                "name": "size",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 10,
+                                "src": "264:10:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint8",
+                                    "typeString": "uint8"
+                                },
+                                "typeName": {
+                                    "id": 8,
+                                    "name": "uint8",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "264:5:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    }
+                                },
+                                "visibility": "internal"
+                            }
+                        ],
+                        "name": "Multihash",
+                        "nodeType": "StructDefinition",
+                        "scope": 79,
+                        "src": "182:100:0",
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "id": 14,
+                        "mutability": "mutable",
+                        "name": "taskCids",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 79,
+                        "src": "290:20:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_Multihash_$10_storage_$dyn_storage",
+                            "typeString": "struct Job.Multihash[]"
+                        },
+                        "typeName": {
+                            "baseType": {
+                                "id": 12,
+                                "nodeType": "UserDefinedTypeName",
+                                "pathNode": {
+                                    "id": 11,
+                                    "name": "Multihash",
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 10,
+                                    "src": "290:9:0"
+                                },
+                                "referencedDeclaration": 10,
+                                "src": "290:9:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_Multihash_$10_storage_ptr",
+                                    "typeString": "struct Job.Multihash"
+                                }
+                            },
+                            "id": 13,
+                            "nodeType": "ArrayTypeName",
+                            "src": "290:11:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_Multihash_$10_storage_$dyn_storage_ptr",
+                                "typeString": "struct Job.Multihash[]"
+                            }
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "constant": false,
+                        "id": 16,
+                        "mutability": "mutable",
+                        "name": "jobType",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 79,
+                        "src": "317:14:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 15,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "317:6:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "constant": false,
+                        "id": 18,
+                        "mutability": "mutable",
+                        "name": "jobName",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 79,
+                        "src": "338:14:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 17,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "338:6:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "constant": false,
+                        "id": 20,
+                        "mutability": "mutable",
+                        "name": "jobDesc",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 79,
+                        "src": "359:14:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_string_storage",
+                            "typeString": "string"
+                        },
+                        "typeName": {
+                            "id": 19,
+                            "name": "string",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "359:6:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage_ptr",
+                                "typeString": "string"
+                            }
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 77,
+                            "nodeType": "Block",
+                            "src": "547:386:0",
+                            "statements": [
+                                {
+                                    "body": {
+                                        "id": 63,
+                                        "nodeType": "Block",
+                                        "src": "605:232:0",
+                                        "statements": [
+                                            {
+                                                "expression": {
+                                                    "arguments": [
+                                                        {
+                                                            "arguments": [
+                                                                {
+                                                                    "expression": {
+                                                                        "baseExpression": {
+                                                                            "id": 48,
+                                                                            "name": "_taskCids",
+                                                                            "nodeType": "Identifier",
+                                                                            "overloadedDeclarations": [],
+                                                                            "referencedDeclaration": 24,
+                                                                            "src": "684:9:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_array$_t_struct$_Multihash_$10_memory_ptr_$dyn_memory_ptr",
+                                                                                "typeString": "struct Job.Multihash memory[] memory"
+                                                                            }
+                                                                        },
+                                                                        "id": 50,
+                                                                        "indexExpression": {
+                                                                            "id": 49,
+                                                                            "name": "i",
+                                                                            "nodeType": "Identifier",
+                                                                            "overloadedDeclarations": [],
+                                                                            "referencedDeclaration": 34,
+                                                                            "src": "694:1:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            }
+                                                                        },
+                                                                        "isConstant": false,
+                                                                        "isLValue": true,
+                                                                        "isPure": false,
+                                                                        "lValueRequested": false,
+                                                                        "nodeType": "IndexAccess",
+                                                                        "src": "684:12:0",
+                                                                        "typeDescriptions": {
+                                                                            "typeIdentifier": "t_struct$_Multihash_$10_memory_ptr",
+                                                                            "typeString": "struct Job.Multihash memory"
+                                                                        }
+                                                                    },
+                                                                    "id": 51,
+                                                                    "isConstant": false,
+                                                                    "isLValue": true,
+                                                                    "isPure": false,
+                                                                    "lValueRequested": false,
+                                                                    "memberName": "digest",
+                                                                    "nodeType": "MemberAccess",
+                                                                    "referencedDeclaration": 5,
+                                                                    "src": "684:19:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_bytes32",
+                                                                        "typeString": "bytes32"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "expression": {
+                                                                        "baseExpression": {
+                                                                            "id": 52,
+                                                                            "name": "_taskCids",
+                                                                            "nodeType": "Identifier",
+                                                                            "overloadedDeclarations": [],
+                                                                            "referencedDeclaration": 24,
+                                                                            "src": "726:9:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_array$_t_struct$_Multihash_$10_memory_ptr_$dyn_memory_ptr",
+                                                                                "typeString": "struct Job.Multihash memory[] memory"
+                                                                            }
+                                                                        },
+                                                                        "id": 54,
+                                                                        "indexExpression": {
+                                                                            "id": 53,
+                                                                            "name": "i",
+                                                                            "nodeType": "Identifier",
+                                                                            "overloadedDeclarations": [],
+                                                                            "referencedDeclaration": 34,
+                                                                            "src": "736:1:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            }
+                                                                        },
+                                                                        "isConstant": false,
+                                                                        "isLValue": true,
+                                                                        "isPure": false,
+                                                                        "lValueRequested": false,
+                                                                        "nodeType": "IndexAccess",
+                                                                        "src": "726:12:0",
+                                                                        "typeDescriptions": {
+                                                                            "typeIdentifier": "t_struct$_Multihash_$10_memory_ptr",
+                                                                            "typeString": "struct Job.Multihash memory"
+                                                                        }
+                                                                    },
+                                                                    "id": 55,
+                                                                    "isConstant": false,
+                                                                    "isLValue": true,
+                                                                    "isPure": false,
+                                                                    "lValueRequested": false,
+                                                                    "memberName": "hashFunction",
+                                                                    "nodeType": "MemberAccess",
+                                                                    "referencedDeclaration": 7,
+                                                                    "src": "726:25:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_uint8",
+                                                                        "typeString": "uint8"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "expression": {
+                                                                        "baseExpression": {
+                                                                            "id": 56,
+                                                                            "name": "_taskCids",
+                                                                            "nodeType": "Identifier",
+                                                                            "overloadedDeclarations": [],
+                                                                            "referencedDeclaration": 24,
+                                                                            "src": "774:9:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_array$_t_struct$_Multihash_$10_memory_ptr_$dyn_memory_ptr",
+                                                                                "typeString": "struct Job.Multihash memory[] memory"
+                                                                            }
+                                                                        },
+                                                                        "id": 58,
+                                                                        "indexExpression": {
+                                                                            "id": 57,
+                                                                            "name": "i",
+                                                                            "nodeType": "Identifier",
+                                                                            "overloadedDeclarations": [],
+                                                                            "referencedDeclaration": 34,
+                                                                            "src": "784:1:0",
+                                                                            "typeDescriptions": {
+                                                                                "typeIdentifier": "t_uint256",
+                                                                                "typeString": "uint256"
+                                                                            }
+                                                                        },
+                                                                        "isConstant": false,
+                                                                        "isLValue": true,
+                                                                        "isPure": false,
+                                                                        "lValueRequested": false,
+                                                                        "nodeType": "IndexAccess",
+                                                                        "src": "774:12:0",
+                                                                        "typeDescriptions": {
+                                                                            "typeIdentifier": "t_struct$_Multihash_$10_memory_ptr",
+                                                                            "typeString": "struct Job.Multihash memory"
+                                                                        }
+                                                                    },
+                                                                    "id": 59,
+                                                                    "isConstant": false,
+                                                                    "isLValue": true,
+                                                                    "isPure": false,
+                                                                    "lValueRequested": false,
+                                                                    "memberName": "size",
+                                                                    "nodeType": "MemberAccess",
+                                                                    "referencedDeclaration": 9,
+                                                                    "src": "774:17:0",
+                                                                    "typeDescriptions": {
+                                                                        "typeIdentifier": "t_uint8",
+                                                                        "typeString": "uint8"
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "expression": {
+                                                                "argumentTypes": [
+                                                                    {
+                                                                        "typeIdentifier": "t_bytes32",
+                                                                        "typeString": "bytes32"
+                                                                    },
+                                                                    {
+                                                                        "typeIdentifier": "t_uint8",
+                                                                        "typeString": "uint8"
+                                                                    },
+                                                                    {
+                                                                        "typeIdentifier": "t_uint8",
+                                                                        "typeString": "uint8"
+                                                                    }
+                                                                ],
+                                                                "id": 47,
+                                                                "name": "Multihash",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 10,
+                                                                "src": "652:9:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_type$_t_struct$_Multihash_$10_storage_ptr_$",
+                                                                    "typeString": "type(struct Job.Multihash storage pointer)"
+                                                                }
+                                                            },
+                                                            "id": 60,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": false,
+                                                            "kind": "structConstructorCall",
+                                                            "lValueRequested": false,
+                                                            "names": [],
+                                                            "nodeType": "FunctionCall",
+                                                            "src": "652:158:0",
+                                                            "tryCall": false,
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_struct$_Multihash_$10_memory_ptr",
+                                                                "typeString": "struct Job.Multihash memory"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_struct$_Multihash_$10_memory_ptr",
+                                                                "typeString": "struct Job.Multihash memory"
+                                                            }
+                                                        ],
+                                                        "expression": {
+                                                            "id": 44,
+                                                            "name": "taskCids",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 14,
+                                                            "src": "620:8:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_array$_t_struct$_Multihash_$10_storage_$dyn_storage",
+                                                                "typeString": "struct Job.Multihash storage ref[] storage ref"
+                                                            }
+                                                        },
+                                                        "id": 46,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "memberName": "push",
+                                                        "nodeType": "MemberAccess",
+                                                        "src": "620:13:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_Multihash_$10_storage_$returns$__$",
+                                                            "typeString": "function (struct Job.Multihash storage ref)"
+                                                        }
+                                                    },
+                                                    "id": 61,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "620:205:0",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_tuple$__$",
+                                                        "typeString": "tuple()"
+                                                    }
+                                                },
+                                                "id": 62,
+                                                "nodeType": "ExpressionStatement",
+                                                "src": "620:205:0"
+                                            }
+                                        ]
+                                    },
+                                    "condition": {
+                                        "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "id": 40,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftExpression": {
+                                            "id": 37,
+                                            "name": "i",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 34,
+                                            "src": "578:1:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "BinaryOperation",
+                                        "operator": "<",
+                                        "rightExpression": {
+                                            "expression": {
+                                                "id": 38,
+                                                "name": "_taskCids",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 24,
+                                                "src": "582:9:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_struct$_Multihash_$10_memory_ptr_$dyn_memory_ptr",
+                                                    "typeString": "struct Job.Multihash memory[] memory"
+                                                }
+                                            },
+                                            "id": 39,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "length",
+                                            "nodeType": "MemberAccess",
+                                            "src": "582:16:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "578:20:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 64,
+                                    "initializationExpression": {
+                                        "assignments": [
+                                            34
+                                        ],
+                                        "declarations": [
+                                            {
+                                                "constant": false,
+                                                "id": 34,
+                                                "mutability": "mutable",
+                                                "name": "i",
+                                                "nodeType": "VariableDeclaration",
+                                                "scope": 64,
+                                                "src": "563:9:0",
+                                                "stateVariable": false,
+                                                "storageLocation": "default",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "typeName": {
+                                                    "id": 33,
+                                                    "name": "uint256",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "563:7:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "visibility": "internal"
+                                            }
+                                        ],
+                                        "id": 36,
+                                        "initialValue": {
+                                            "hexValue": "30",
+                                            "id": 35,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "number",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "575:1:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_rational_0_by_1",
+                                                "typeString": "int_const 0"
+                                            },
+                                            "value": "0"
+                                        },
+                                        "nodeType": "VariableDeclarationStatement",
+                                        "src": "563:13:0"
+                                    },
+                                    "loopExpression": {
+                                        "expression": {
+                                            "id": 42,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "nodeType": "UnaryOperation",
+                                            "operator": "++",
+                                            "prefix": false,
+                                            "src": "600:3:0",
+                                            "subExpression": {
+                                                "id": 41,
+                                                "name": "i",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 34,
+                                                "src": "600:1:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "id": 43,
+                                        "nodeType": "ExpressionStatement",
+                                        "src": "600:3:0"
+                                    },
+                                    "nodeType": "ForStatement",
+                                    "src": "558:279:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 67,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 65,
+                                            "name": "jobType",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 16,
+                                            "src": "849:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_storage",
+                                                "typeString": "string storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 66,
+                                            "name": "_jobType",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 26,
+                                            "src": "859:8:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string memory"
+                                            }
+                                        },
+                                        "src": "849:18:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage",
+                                            "typeString": "string storage ref"
+                                        }
+                                    },
+                                    "id": 68,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "849:18:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 71,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 69,
+                                            "name": "jobName",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 18,
+                                            "src": "878:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_storage",
+                                                "typeString": "string storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 70,
+                                            "name": "_jobName",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 28,
+                                            "src": "888:8:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string memory"
+                                            }
+                                        },
+                                        "src": "878:18:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage",
+                                            "typeString": "string storage ref"
+                                        }
+                                    },
+                                    "id": 72,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "878:18:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 75,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 73,
+                                            "name": "jobDesc",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 20,
+                                            "src": "907:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_storage",
+                                                "typeString": "string storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 74,
+                                            "name": "_jobDesc",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 30,
+                                            "src": "917:8:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string memory"
+                                            }
+                                        },
+                                        "src": "907:18:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage",
+                                            "typeString": "string storage ref"
+                                        }
+                                    },
+                                    "id": 76,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "907:18:0"
+                                }
+                            ]
+                        },
+                        "id": 78,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 31,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 24,
+                                    "mutability": "mutable",
+                                    "name": "_taskCids",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 78,
+                                    "src": "404:28:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_array$_t_struct$_Multihash_$10_memory_ptr_$dyn_memory_ptr",
+                                        "typeString": "struct Job.Multihash[]"
+                                    },
+                                    "typeName": {
+                                        "baseType": {
+                                            "id": 22,
+                                            "nodeType": "UserDefinedTypeName",
+                                            "pathNode": {
+                                                "id": 21,
+                                                "name": "Multihash",
+                                                "nodeType": "IdentifierPath",
+                                                "referencedDeclaration": 10,
+                                                "src": "404:9:0"
+                                            },
+                                            "referencedDeclaration": 10,
+                                            "src": "404:9:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Multihash_$10_storage_ptr",
+                                                "typeString": "struct Job.Multihash"
+                                            }
+                                        },
+                                        "id": 23,
+                                        "nodeType": "ArrayTypeName",
+                                        "src": "404:11:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_struct$_Multihash_$10_storage_$dyn_storage_ptr",
+                                            "typeString": "struct Job.Multihash[]"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 26,
+                                    "mutability": "mutable",
+                                    "name": "_jobType",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 78,
+                                    "src": "443:22:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 25,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "443:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 28,
+                                    "mutability": "mutable",
+                                    "name": "_jobName",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 78,
+                                    "src": "476:22:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 27,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "476:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 30,
+                                    "mutability": "mutable",
+                                    "name": "_jobDesc",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 78,
+                                    "src": "509:22:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 29,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "509:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "393:145:0"
+                        },
+                        "returnParameters": {
+                            "id": 32,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "547:0:0"
+                        },
+                        "scope": 79,
+                        "src": "382:551:0",
+                        "stateMutability": "payable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 80,
+                "src": "162:774:0"
+            }
+        ],
+        "src": "33:905:0"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "infinite",
+            "totalCost": "infinite"
+        }
+    }
+}
