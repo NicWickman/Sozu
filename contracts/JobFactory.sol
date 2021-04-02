@@ -8,19 +8,19 @@ contract JobFactory {
     Job[] public jobs;
 
     function createAndEndow(
-        string[] memory _taskCids,
         string memory _jobType,
         string memory _jobName,
         string memory _jobDesc,
-        uint256 _maxBatchSize
+        uint256 _maxBatchSize,
+        uint256 _numTasks
     ) public payable returns (Job) {
         Job job =
             (new Job){value: msg.value}(
-                _taskCids,
                 _jobType,
                 _jobName,
                 _jobDesc,
-                _maxBatchSize
+                _maxBatchSize,
+                _numTasks
             );
         jobs.push(job);
         return job;
