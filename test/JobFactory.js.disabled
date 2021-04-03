@@ -1,5 +1,4 @@
-const { MerkleTree } = require('merkletreejs')
-const keccak = require('crypto-js/sha3')
+const JobFactory = artifacts.require('JobFactory');
 
 const cids = [
     "QmZpRvB6io4sZaALCEyjdVesH3YggckdZ1kRpSrFDV5dFf",
@@ -286,96 +285,28 @@ const cids = [
     "QmV9nDAGcA3sqFrmmQ7tmPrMuxuY7S11nCWmSUkBmcWfcs"
 ];
 
-// // Files to be answered
-// const tinyCids = [
-//     "QmZpRvB6io4sZaALCEyjdVesH3YggckdZ1kRpSrFDV5dFf",
-//     "QmebgH2vCcLDGQnwp48tSRirpLdGJs3rHtWdW3qyUMxakk",
-//     "QmUMWiebt7gsagt49t4R8GXzQVL2YJ67i5SwffQL1pRMJ9",
-//     "QmYgkjh2r3yYowh1QxMJRqUvdhjbgwt2MYWo3B1L76CC7Y",
-//     "QmZnP2bFKtHxydwdAZ4BHHv9qYNTPjxME6QwJDjsBA4atB",
-//     "QmRWoGvjsZqGfrXbtrzeBU1XESzrvMCJAWtkbHDGdNvbjU",
-//     "QmXjztPbBDdavBs9RcyDvo1Zxg3owUJsZfXuSb2GHhAJWL",
-//     "QmcKf7DPhy9wC9avsXVhd3XaNfkebF2BdLjGa9c4MUi6pw",
-//     "QmYWgtk8u9Ut9V8J5uFdpWTso6qWYeXzQCfdNPY5335Fcv",
-//     "Qmb9qNKXHKq4dzC1Yyo7rwV3fKS4BXKEDMJQwt8Fr2aPD2",
-// ];
+contract('JobFactory', () => {
+	it('should create and endow a job', async () => {
+			let instance = await JobFactory.deployed();
+			let jobAddress = await instance.createAndEndow.call(
+				'label_images',
+				'Cats vs. Dogs',
+				'Earn Ether by helping us identify the difference between cats and dogs.',
+				10,
+				cids.length)
+			
+			let results = await instance.createAndEndow(
+				'label_images',
+				'Cats vs. Dogs',
+				'Earn Ether by helping us identify the difference between cats and dogs.',
+				1000,
+				{ value: web3.utils.toWei('1', 'ether') }
+			);
+	
+			let jobValue = await web3.eth.getBalance(jobAddress);
+			assert.equal(jobValue, '1000000000000000000', "Contract does not have the correct balance in the pool.")
 
-// const answers = ["cat", "dog"]
+			console.log(results)
 
-// // Concat image files with their index and Worker's provided answer
-// const saltCids = tinyCids.map((x, idx) => x + idx.toString() + answers[idx % 2]) 
-
-// // Hash the leaves
-// const leaves = saltCids.map((x) => keccak(x))
-
-// // Build the tree
-// const tree = new MerkleTree(leaves, keccak);
-
-// // Root is the top-level hash of the tree
-// const root = tree.getRoot().toString('hex')
-
-// // Worker submits root to Smart Contract. 
-// // Contract randomly audits indexes. Audit comes back, file 4 was audited. 
-
-// // Worker creates proof that the leaf at index 4 contains the answer "cat".
-// const leaf = keccak("QmZnP2bFKtHxydwdAZ4BHHv9qYNTPjxME6QwJDjsBA4atB" + "4" + "cat").toString()
-// const proof = tree.getProof(leaf);
-// console.log(proof);
-// console.log(tree.verify(proof, leaf, root)) // Returns True
-
-// ///
-// // If Worker submits wrong answer
-// const badAnswerLeaf = keccak("QmZnP2bFKtHxydwdAZ4BHHv9qYNTPjxME6QwJDjsBA4atB" + "4" + "dog").toString()
-// const badAnswerProof = tree.getProof(badAnswerLeaf);
-// console.log(tree.verify(badAnswerProof, badAnswerLeaf, root)) // Returns False
-
-// // If Worker submits wrong index
-// const badIndexLeaf = keccak("QmZnP2bFKtHxydwdAZ4BHHv9qYNTPjxME6QwJDjsBA4atB" + "3" + "cat").toString()
-// const badIndexProof = tree.getProof(badIndexLeaf);
-// console.log(tree.verify(badIndexProof, badIndexLeaf, root)) // Returns False
-// // etc
-// ///
-
-
-function strToUtf8Bytes(str) {
-    const utf8 = [];
-    for (let ii = 0; ii < str.length; ii++) {
-      let charCode = str.charCodeAt(ii);
-      if (charCode < 0x80) utf8.push(charCode);
-      else if (charCode < 0x800) {
-        utf8.push(0xc0 | (charCode >> 6), 0x80 | (charCode & 0x3f));
-      } else if (charCode < 0xd800 || charCode >= 0xe000) {
-        utf8.push(0xe0 | (charCode >> 12), 0x80 | ((charCode >> 6) & 0x3f), 0x80 | (charCode & 0x3f));
-      } else {
-        ii++;
-        // Surrogate pair:
-        // UTF-16 encodes 0x10000-0x10FFFF by subtracting 0x10000 and
-        // splitting the 20 bits of 0x0-0xFFFFF into two halves
-        charCode = 0x10000 + (((charCode & 0x3ff) << 10) | (str.charCodeAt(ii) & 0x3ff));
-        utf8.push(
-          0xf0 | (charCode >> 18),
-          0x80 | ((charCode >> 12) & 0x3f),
-          0x80 | ((charCode >> 6) & 0x3f),
-          0x80 | (charCode & 0x3f),
-        );
-      }
-    }
-    return utf8;
-  }
-
-const leaves = cids.map(x => keccak(x, {outputLength: 256}));
-const tree = new MerkleTree(leaves, keccak);
-const root = tree.getRoot().toString('hex');
-const rootHash = keccak(root, {outputLength: 256}).toString();
-console.log(root);
-console.log(strToUtf8Bytes(rootHash).length)
-
-// const leaf = keccak(cids[0]).toString();
-
-// console.log(byteSize(leaf))
-
-// const proof = tree.getProof(leaf)
-
-// console.log(byteSize(proof[0].data));
-
-// console.log("Merkle Proof JS: ", tree.verify(proof, leaf, root))
+	});
+});
