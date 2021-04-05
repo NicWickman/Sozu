@@ -1,7 +1,5 @@
 {
-  "_format": "hh-sol-artifact-1",
   "contractName": "ConditionalEscrow",
-  "sourceName": "contracts/utils/escrow/ConditionalEscrow.sol",
   "abi": [
     {
       "anonymous": false,

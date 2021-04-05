@@ -1,6 +1,12 @@
 const Migrations = artifacts.require('Migrations');
 const JobFactory = artifacts.require('JobFactory');
 const Job = artifacts.require('Job');
+// const RandomNumberConsumer = artifacts.require('RandomNumberConsumer');
+// const MockV3Aggregator = artifacts.require('MockV3Aggregator');
+// const VRFCoordinatorMock = artifacts.require('VRFCoordinatorMock');
+
+
+
 
 const cids = [
     "QmZpRvB6io4sZaALCEyjdVesH3YggckdZ1kRpSrFDV5dFf",
@@ -295,5 +301,6 @@ module.exports = function (deployer) {
 		'Cats vs. Dogs',
 		'Earn Ether by helping us identify the difference between cats and dogs.',
 		10,
-		cids.length)
+		cids.length,
+        5)
 };

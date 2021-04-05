@@ -289,28 +289,28 @@ const cids = [
 ];
 
 contract('Job', (accounts) => {
-	// it('should allow reserving a batch', async () => {
-	// 		let instance = await Job.deployed();
-	// 		await instance.reserveBatch()
-	// 		await instance.viewBatch();
-	// 		let myIndexes = await instance.getTaskIndexesForAddress();
-	// 		console.log(myIndexes[0].toNumber())
-	// 		console.log(myIndexes[1].toNumber())
-	// });
+	it('should allow reserving a batch', async () => {
+			let instance = await Job.deployed();
+			await instance.reserveBatch()
+			await instance.viewBatch();
+			let myIndexes = await instance.getTaskIndexesForAddress();
+			console.log(myIndexes[0].toNumber())
+			console.log(myIndexes[1].toNumber())
+	});
 
-	// it('should not allow reserving a second batch', async () => {
-	// 	let instance = await Job.deployed();
-	// 	truffleAssert.reverts(instance.reserveBatch(), "revert");
-	// });
+	it('should not allow reserving a second batch', async () => {
+		let instance = await Job.deployed();
+		truffleAssert.reverts(instance.reserveBatch(), "revert");
+	});
 
-	// it('should allow another account to reserve the next batch', async () => {
-	// 	let instance = await Job.deployed();
-	// 	await instance.reserveBatch({from : accounts[1]})
-	// 	await instance.viewBatch({from: accounts[1]})
-	// 	let myIndexes = await instance.getTaskIndexesForAddress({from: accounts[1]});
-	// 	console.log(myIndexes[0].toNumber())
-	// 	console.log(myIndexes[1].toNumber())
-	// });
+	it('should allow another account to reserve the next batch', async () => {
+		let instance = await Job.deployed();
+		await instance.reserveBatch({from : accounts[1]})
+		await instance.viewBatch({from: accounts[1]})
+		let myIndexes = await instance.getTaskIndexesForAddress({from: accounts[1]});
+		console.log(myIndexes[0].toNumber())
+		console.log(myIndexes[1].toNumber())
+	});
 
 	
 	it('should prove the first cid is legitimate', async () => {

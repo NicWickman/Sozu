@@ -1,7 +1,5 @@
 {
-  "_format": "hh-sol-artifact-1",
   "contractName": "Pausable",
-  "sourceName": "contracts/security/Pausable.sol",
   "abi": [
     {
       "anonymous": false,
