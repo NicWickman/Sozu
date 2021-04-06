@@ -230,7 +230,7 @@ contract Job is Ownable {
         batches[msg.sender].committedAnswersHash = _answersHash;
     }
 
-    function acceptAnswers(uint256 _batchIndex) external {
+    function acceptAnswers(uint256 _batchIndex) external onlyEmployer {
         require(isBatch(batchIndex[_batchIndex]), "Batch index does not exist");
         require(
             batchIndex[_batchIndex] == msg.sender,
@@ -243,7 +243,7 @@ contract Job is Ownable {
         batches[batchIndex[_batchIndex]].answersAccepted = true;
     }
 
-    function rejectAnswers(uint256 _batchIndex) external {
+    function rejectAnswers(uint256 _batchIndex) external onlyEmployer {
         require(isBatch(batchIndex[_batchIndex]), "Batch index does not exist");
         require(
             batches[batchIndex[_batchIndex]].answersSubmitted == true,

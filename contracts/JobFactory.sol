@@ -6,6 +6,8 @@ import "./Job.sol";
 contract JobFactory {
     Job[] public jobs;
 
+    event JobPublished(address publisher, address job);
+
     function createAndEndow(
         string memory _topLevelCid,
         string memory _jobType,
@@ -16,12 +18,25 @@ contract JobFactory {
         uint8 _reviewPct
     ) public payable returns (Job) {
         require(
-            _reviewPct <= 100,
-            "Review percentage must be less than or equal to 100"
+            _reviewPct <= 100 && _reviewPct > 0,
+            "Review percentage must be greater than 0 and less than or equal to 100"
         );
         require(
             _maxBatchSize <= _numTasks,
             "Batch size cannot be greater than the number of tasks."
+        );
+
+        require(bytes(_topLevelCid).length > 0, "Please provide all fields.");
+        require(bytes(_jobType).length > 0, "Please provide all fields.");
+        require(bytes(_jobName).length > 0, "Please provide all fields.");
+        require(bytes(_jobDesc).length > 0, "Please provide all fields.");
+        require(
+            _maxBatchSize > 0 && _maxBatchSize <= _numTasks,
+            "Max batch size must be greater than zero and less than or equal to the total number of tasks."
+        );
+        require(
+            _numTasks > 0 && _numTasks >= _maxBatchSize,
+            "Total number of tasks must be greater than zero and greater than or equal to the max batch size."
         );
 
         Job job =
@@ -36,6 +51,8 @@ contract JobFactory {
                 _reviewPct
             );
         jobs.push(job);
+
+        emit JobPublished(msg.sender, address(job));
         return job;
     }
 
