@@ -410,32 +410,4 @@ contract Job is Ownable, ChainlinkClient {
         return sendChainlinkRequestTo(oracle, request, fee);
     }
 
-
-
-    function getJobData() public view returns (address employer,
-                                                string memory topLevelCid,
-                                                string memory jobType,
-                                                string memory jobName,
-                                                string memory jobDesc,
-                                                uint256 batchSize,
-                                                uint256 numTasks,
-                                                uint256 numBatches,
-                                                uint256 lastBatchSize,
-                                                uint256 totalBountyPool,
-                                                uint256 currentBountyPool,
-                                                uint8 reviewPct) {
-        return (employer,
-                topLevelCid,
-                jobType,
-                jobName,
-                jobDesc,
-                batchSize,
-                numTasks,
-                numBatches,
-                lastBatchSize,
-                totalBountyPool,
-                currentBountyPool,
-                reviewPct
-                );
-    }
 }

@@ -46,8 +46,6 @@ contract JobFactory is VRFConsumerBase {
     mapping(bytes32 => address) jobVRFRequests;
 
     function createAndEndow(
-        address address(this),
-        address msg.sender,
         string memory _topLevelCid,
         string memory _jobType,
         string memory _jobName,

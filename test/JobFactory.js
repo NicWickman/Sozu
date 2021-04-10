@@ -288,9 +288,10 @@ const cids = [
 contract('JobFactory', () => {
 	it('should create and endow a job', async () => {
 		let instance = await JobFactory.deployed();
+		console.log(instance);
 
 		let jobAddress = await instance.createAndEndow.call(
-			'0x2f7fbcf4504fa6f187ee9d0d09ddd697891771e5',
+			'QmZYxkpQAtKpRdamFzoEzXq8q7Y5oJ6PPXUfoucxfsjNk8',
 			'label_images',
 			'Cats vs. Dogs',
 			'Earn Ether by helping us identify the difference between cats and dogs.',
@@ -301,7 +302,7 @@ contract('JobFactory', () => {
 		console.log(jobAddress);
 
 		let results = await instance.createAndEndow(
-			'0x2f7fbcf4504fa6f187ee9d0d09ddd697891771e5',
+			'QmZYxkpQAtKpRdamFzoEzXq8q7Y5oJ6PPXUfoucxfsjNk8',
 			'label_images',
 			'Cats vs. Dogs',
 			'Earn Ether by helping us identify the difference between cats and dogs.',
@@ -318,7 +319,7 @@ contract('JobFactory', () => {
 	it('should have an array of available jobs', async () => {
 		let instance = await JobFactory.deployed();
 		await instance.createAndEndow(
-			'0x2f7fbcf4504fa6f187ee9d0d09ddd697891771e5',
+			'QmZYxkpQAtKpRdamFzoEzXq8q7Y5oJ6PPXUfoucxfsjNk8',
 			'label_images',
 			'Cats vs. Dogs 2',
 			'Earn Ether by helping us identify the difference between cats and dogs (again).',
