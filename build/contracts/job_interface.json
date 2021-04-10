@@ -1,0 +1,320 @@
+{
+  "contractName": "job_interface",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "fulfill_random",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.6+commit.6c089d02\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"fulfill_random\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/cryptodev/sozu/contracts/interfaces/job_interface.sol\":\"job_interface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/E/cryptodev/sozu/contracts/interfaces/job_interface.sol\":{\"keccak256\":\"0xf6568cfcdea3c5f28a44555bb33d37203313b7ade4ae6654c1173b269b1c38cf\",\"urls\":[\"bzz-raw://0089ff630341b78de3d28af50e711e66764aed6249ae9ec837ebba791dd13daf\",\"dweb:/ipfs/QmR7ShxxUn79CuGUmUv63X5G6eD3EFBsBvQGRkzejrp7LV\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.6.6;\r\n\r\ninterface job_interface {\r\n    function fulfill_random(bytes32, uint) external;\r\n}",
+  "sourcePath": "E:/cryptodev/sozu/contracts/interfaces/job_interface.sol",
+  "ast": {
+    "absolutePath": "/E/cryptodev/sozu/contracts/interfaces/job_interface.sol",
+    "exportedSymbols": {
+      "job_interface": [
+        1289
+      ]
+    },
+    "id": 1290,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1281,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1289,
+        "linearizedBaseContracts": [
+          1289
+        ],
+        "name": "job_interface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "functionSelector": "e490ca4f",
+            "id": 1288,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "fulfill_random",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1286,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1283,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1288,
+                  "src": "81:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 1282,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "81:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1285,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1288,
+                  "src": "90:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1284,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "90:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "80:15:2"
+            },
+            "returnParameters": {
+              "id": 1287,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "104:0:2"
+            },
+            "scope": 1289,
+            "src": "57:48:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1290,
+        "src": "26:82:2"
+      }
+    ],
+    "src": "0:108:2"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/E/cryptodev/sozu/contracts/interfaces/job_interface.sol",
+      "exportedSymbols": {
+        "job_interface": [
+          1289
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".6"
+          ]
+        },
+        "id": 1281,
+        "name": "PragmaDirective",
+        "src": "0:22:2"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1289
+          ],
+          "name": "job_interface",
+          "scope": 1290
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "functionSelector": "e490ca4f",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "fulfill_random",
+              "overrides": null,
+              "scope": 1289,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 1288,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 1282,
+                        "name": "ElementaryTypeName",
+                        "src": "81:7:2"
+                      }
+                    ],
+                    "id": 1283,
+                    "name": "VariableDeclaration",
+                    "src": "81:7:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "overrides": null,
+                      "scope": 1288,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 1284,
+                        "name": "ElementaryTypeName",
+                        "src": "90:4:2"
+                      }
+                    ],
+                    "id": 1285,
+                    "name": "VariableDeclaration",
+                    "src": "90:4:2"
+                  }
+                ],
+                "id": 1286,
+                "name": "ParameterList",
+                "src": "80:15:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1287,
+                "name": "ParameterList",
+                "src": "104:0:2"
+              }
+            ],
+            "id": 1288,
+            "name": "FunctionDefinition",
+            "src": "57:48:2"
+          }
+        ],
+        "id": 1289,
+        "name": "ContractDefinition",
+        "src": "26:82:2"
+      }
+    ],
+    "id": 1290,
+    "name": "SourceUnit",
+    "src": "0:108:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.6+commit.6c089d02.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-04-10T03:32:33.346Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

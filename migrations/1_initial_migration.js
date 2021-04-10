@@ -293,11 +293,15 @@ const cids = [
 module.exports = function (deployer) {
 	deployer.deploy(Migrations);
 	deployer.deploy(JobFactory);
-	// deployer.deploy(Job,
+	// deployer.deploy(
+	// 	Job,
+	// 	'0x2f7fbcf4504fa6f187ee9d0d09ddd697891771e5',
+	// 	'QmZYxkpQAtKpRdamFzoEzXq8q7Y5oJ6PPXUfoucxfsjNk8',
 	// 	'label_images',
 	// 	'Cats vs. Dogs',
 	// 	'Earn Ether by helping us identify the difference between cats and dogs.',
 	// 	10,
 	// 	cids.length,
-	//     5)
+	// 	5
+	// );
 };

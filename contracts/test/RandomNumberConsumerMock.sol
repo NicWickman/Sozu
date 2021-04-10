@@ -1,6 +1,6 @@
 pragma solidity >=0.4.22 <0.9.0;
 
-import "../node_modules/@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
+import "../../node_modules/@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 
 contract RandomNumberConsumer is VRFConsumerBase {
     bytes32 internal keyHash;

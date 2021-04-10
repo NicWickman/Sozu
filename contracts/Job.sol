@@ -6,21 +6,35 @@ import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 import "../node_modules/@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 import "../node_modules/@openzeppelin/contracts/math/SafeMath.sol";
 import "../node_modules/@openzeppelin/contracts/cryptography/MerkleProof.sol";
+import "../node_modules/@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
+import {factory_interface} from "./interfaces/factory_interface.sol";
 
-contract Job is Ownable {
-    address employer;
-    string topLevelCid;
-    string jobType;
-    string jobName;
-    string jobDesc;
-    uint256 batchSize;
-    uint256 numTasks;
-    uint256 numBatches;
-    uint256 lastBatchSize;
-    uint256 totalBountyPool;
-    uint256 currentBountyPool;
+
+contract Job is Ownable, ChainlinkClient {
+    address private oracle;
+    bytes32 private jobId;
+    uint256 private fee;
+    factory_interface public factory;
+
+    address public employer;
+    string public topLevelCid;
+    string public jobType;
+    string public jobName;
+    string public jobDesc;
+    uint256 public batchSize;
+    uint256 public numTasks;
+    uint256 public numBatches;
+    uint256 public lastBatchSize;
+    uint256 public totalBountyPool;
+    uint256 public currentBountyPool;
     uint256 nonce;
-    uint8 reviewPct;
+    uint8 public reviewPct;
+
+    uint256 randomNumber;
+
+    mapping(bytes32 => uint256) randomNumbers;
+    mapping(bytes32 => string) returnedCids;
+
 
     struct Batch {
         bool isBatch;
@@ -32,13 +46,23 @@ contract Job is Ownable {
         uint256[] reviewIndexes;
         uint256 index;
         string answersCID;
+        uint256[] reviewAnswers;
     }
 
     mapping(address => Batch) batches;
     address[] batchIndex;
     uint256[] rejectedBatchIndexes;
 
+
+    /**
+     * Network: Kovan
+     * Oracle: 0x2f90A6D021db21e1B2A077c5a37B3C7E75D15b7e
+     * Job ID: 29fa9aa13bf1468788b7cc4a500a45b8
+     * Fee: 0.1 LINK
+     */
+
     constructor(
+        address _factory,
         address _employer,
         string memory _topLevelCid,
         string memory _jobType,
@@ -48,6 +72,12 @@ contract Job is Ownable {
         uint256 _numTasks,
         uint8 _reviewPct
     ) public payable {
+        setPublicChainlinkToken();
+        oracle = 0x2f90A6D021db21e1B2A077c5a37B3C7E75D15b7e;
+        jobId = "29fa9aa13bf1468788b7cc4a500a45b8";
+        fee = 0.1 * 10**18; // 0.1 LINK
+        factory = factory_interface(_factory);
+
         employer = _employer;
         topLevelCid = _topLevelCid;
         jobType = _jobType;
@@ -112,7 +142,7 @@ contract Job is Ownable {
     }
 
     function reserveBatch() external returns (uint256) {
-        // Add check for rejected batches
+        require(batchIndex.length < numBatches, "All the batches for this Job have been claimed.");
         return addBatch(msg.sender);
     }
 
@@ -126,13 +156,13 @@ contract Job is Ownable {
         return (minIdx, maxIdx);
     }
 
-    function getTaskIndexesForAddress()
+    function getTaskIndexesForAddress(address _address)
         public
         view
         returns (uint256 minIndex, uint256 maxIndex)
     {
         require(isBatch(msg.sender));
-        return getTaskIndexesForBatch(batches[msg.sender].index);
+        return getTaskIndexesForBatch(batches[_address].index);
     }
 
     function verifyProof(
@@ -169,13 +199,17 @@ contract Job is Ownable {
         batches[msg.sender].reviewIndexes = reviewIndexes;
     }
 
+    function fulfill_random(bytes32 requestId, uint256 randomness) external returns(uint256) {
+        randomNumber = randomness;
+        return randomness;
+    }
+
     function randomSelectReview(uint256 _batchIndex)
         private
-        view
         returns (uint256[] memory reviewIndexes)
     {
-        // Chainlink VRF randomly select index for proof
-        // STUBBED
+        factory_interface(factory.factory()).getRandomNumber(54389745, address(this)); // Some random Seed
+
         uint256 _thisBatchSize;
         if (_batchIndex == SafeMath.sub(numBatches, 1)) {
             _thisBatchSize = lastBatchSize;
@@ -191,7 +225,7 @@ contract Job is Ownable {
                 SafeMath.mul(_batchIndex, _thisBatchSize),
                 SafeMath.mod(
                     uint256(
-                        keccak256(abi.encodePacked(uint256(76832476), nonce)) // Get this random number from chainlink VFR
+                        keccak256(abi.encodePacked(randomNumber, nonce))
                     ),
                     _thisBatchSize
                 )
@@ -203,8 +237,8 @@ contract Job is Ownable {
 
     function proveAnswers(
         uint256 _batchIndex,
+        uint256[] calldata _answers,
         bytes32[] calldata _proof,
-        bytes32 _leaf,
         bytes32 _answersHash
     ) external {
         // submit merkle proof of answers
@@ -218,16 +252,35 @@ contract Job is Ownable {
             batches[batchIndex[_batchIndex]].answersSubmitted == true,
             "Batch has not had answers submitted."
         );
+
+        // Construct leaves internally with returned CIDs from Chainlink to verify the proof.
+        (uint256 indexMin, uint256 indexMax) = getTaskIndexesForAddress(msg.sender);
+        
+        bytes32[] memory leaves = new bytes32[](_answers.length);
+        uint256 answersIndex = 0;
+        for (uint i = indexMin; i <= indexMax; i++){
+            bytes32 requestId = requestIndexCID(topLevelCid, i);
+            string memory returnedCid = returnedCids[requestId];
+            bytes32 leaf = keccak256(abi.encode(i, returnedCid, _answers[answersIndex]));
+            leaves[answersIndex] = leaf;
+            answersIndex++;
+        }
+
+        for (uint i; i < leaves.length; i++){
         require(
             MerkleProof.verify(
                 _proof,
                 batches[msg.sender].committedRoot,
-                _leaf
+                leaves[i]
             ),
             "Merkle proof failed."
         );
+        }
 
+        // We've proven the submitted answers for review match what the worker committed earlier.
         batches[msg.sender].committedAnswersHash = _answersHash;
+        batches[msg.sender].reviewAnswers = _answers;
+
     }
 
     function acceptAnswers(uint256 _batchIndex) external onlyEmployer {
@@ -253,11 +306,14 @@ contract Job is Ownable {
         batches[batchIndex[_batchIndex]].isBatch = false;
     }
 
+    function fulfill(bytes32 _requestId, string memory _cid) public
+        recordChainlinkFulfillment(_requestId){
+        returnedCids[_requestId] = _cid;
+    }
+
     function finalizeSubmission(uint256 _batchIndex, string calldata _cid)
         external
     {
-        // submit IPFS file with the answers that matches pre-submitted hash
-        // Get payment
         require(isBatch(batchIndex[_batchIndex]), "Batch index does not exist");
         require(
             batchIndex[_batchIndex] == msg.sender,
@@ -278,6 +334,9 @@ contract Job is Ownable {
         );
 
         // Chainlink APIConsumer Call to confirm the IPFS file exists
+        bytes32 requestId = requestCID(_cid);
+        require(keccak256(abi.encode(returnedCids[requestId])) == keccak256(abi.encode(_cid)), "Hash of submitted cid does not match committed answers hash.");
+
         batches[msg.sender].answersCID = _cid;
         claimBounty(msg.sender, _batchIndex);
     }
@@ -309,5 +368,74 @@ contract Job is Ownable {
         return totalBountyPool / numTasks;
     }
 
-    // function getRandomNumbers() private view returns (uint256[] memory) {}
+
+    /**
+     * Create a Chainlink request to retrieve API response, find the target
+     */
+    function requestCID(string memory _cid)
+        public
+        returns (bytes32 requestId)
+    {
+        Chainlink.Request memory request =
+            buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
+
+        // Set the URL to perform the GET request on
+        request.add(
+            "get",
+            string(abi.encode("http://ipfs.io/api/v0/ls?arg=", _cid))
+        );
+
+        request.add("path", "Objects.0.Hash");
+
+        // Sends the request
+        return sendChainlinkRequestTo(oracle, request, fee);
+    }
+
+    function requestIndexCID(string memory _cid, uint256 _idx)
+        public
+        returns (bytes32 requestId)
+    {
+        Chainlink.Request memory request =
+            buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
+
+        // Set the URL to perform the GET request on
+        request.add(
+            "get",
+            string(abi.encode("http://ipfs.io/api/v0/ls?arg=", _cid))
+        );
+
+        request.add("path", string(abi.encode("Objects.0.Links.", _idx, ".Hash")));
+
+        // Sends the request
+        return sendChainlinkRequestTo(oracle, request, fee);
+    }
+
+
+
+    function getJobData() public view returns (address employer,
+                                                string memory topLevelCid,
+                                                string memory jobType,
+                                                string memory jobName,
+                                                string memory jobDesc,
+                                                uint256 batchSize,
+                                                uint256 numTasks,
+                                                uint256 numBatches,
+                                                uint256 lastBatchSize,
+                                                uint256 totalBountyPool,
+                                                uint256 currentBountyPool,
+                                                uint8 reviewPct) {
+        return (employer,
+                topLevelCid,
+                jobType,
+                jobName,
+                jobDesc,
+                batchSize,
+                numTasks,
+                numBatches,
+                lastBatchSize,
+                totalBountyPool,
+                currentBountyPool,
+                reviewPct
+                );
+    }
 }
