@@ -58,9 +58,9 @@ Update your ipfsApi and ipfsGateway host in `app/src/config.json`.
 
 I have prepared an IPFS directory with the required structure at `QmZYxkpQAtKpRdamFzoEzXq8q7Y5oJ6PPXUfoucxfsjNk8`. If you wish to create your own job, pin these contents to your own IPFS node or upload a directory with the following format:
 
-<img src="https://github.com/pappas999/Link-My-Ride/blob/master/src/web-app/public/youtubeprev.png"/>
-<img src="https://github.com/pappas999/Link-My-Ride/blob/master/src/web-app/public/youtubeprev.png"/>
-<img src="https://github.com/pappas999/Link-My-Ride/blob/master/src/web-app/public/youtubeprev.png"/>
+<img src=https://github.com/NicWickman/Sozu/blob/master/images/ipfs_dir.png/>
+<img src=https://github.com/NicWickman/Sozu/blob/master/images/classes.png/>
+<img src=https://github.com/NicWickman/Sozu/blob/master/images/instructions.png/>
 
 The `Data` directory contains the images to be labelled.
 
