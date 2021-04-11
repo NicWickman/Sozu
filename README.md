@@ -7,7 +7,7 @@ Mechanical Turk reimagined on the blockchain. Chainlink Hackathon Spring 2021
 Sozu is a proof-of-concept which leverages the nature of smart contracts to provide trustless, permissionless paid work to anybody in the world a la Mechanical Turk.
 Amazon Mechanical Turk is a crowdsourcing marketplace which allows approved participants to complete tasks in exchange for payment. This accessible form of labour provides income for many thousands of workers, primarily in the United States, but suffers from issues of fairness, trust and transparency. Amazon must approve your participation, the platform is centralized, and workers suffer from power imbalances in the system.
 
-Workers frequently have their work taken for free, as their work is sometimes exposed to the client and then rejected. They can also be rejected on the basis of missing "gold standard" questions, which are often engineered to be answered incorrectly at a higher rate to justify witholding payment.
+Workers frequently have their work taken for free, as their work is sometimes exposed to the client and then rejected. They can also be rejected on the basis of missing "gold standard" questions, which are often engineered to be answered incorrectly at a higher rate to justify withholding payment.
 
 This project presents a single type of task as a demonstration: Image dataset labelling. To train machine learning algorithms, up to millions of images must be accurately labelled by humans before they can be used. With Sozu, the owner of a dataset can upload their data to IPFS and create a smart contract Job endowed with Ethereum. A worker can reserve a batch of images, label the data, and submit their answers.
 We must avoid a few pitfalls to successfully solve the aforementioned problems:
