@@ -9,7 +9,7 @@ Amazon Mechanical Turk is a crowdsourcing marketplace which allows approved part
 
 Workers frequently have their work taken for free, as their work is sometimes exposed to the client and then rejected. They can also be rejected on the basis of missing "gold standard" questions, which are often engineered to be answered incorrectly at a higher rate to justify witholding payment.
 
-This project presents a single type of task as a demonstration: Image dataset labelling. To train machine learning algorithms, up to millions of images must be accurately labelled by humans before they can be used. With Sozu, the owner of a dataset can upload their data to IPFS and create a smart contract Job. A worker can reserve a batch of images, label the data, and submit their answers.
+This project presents a single type of task as a demonstration: Image dataset labelling. To train machine learning algorithms, up to millions of images must be accurately labelled by humans before they can be used. With Sozu, the owner of a dataset can upload their data to IPFS and create a smart contract Job endowed with Ethereum. A worker can reserve a batch of images, label the data, and submit their answers.
 We must avoid a few pitfalls to successfully solve the aforementioned problems:
 
 -   The whole work can not be revealed to the client, or else we must trust them to pay.
