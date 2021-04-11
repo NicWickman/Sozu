@@ -53,7 +53,7 @@ I did not have time to "listen" and update the UI after each transaction in the 
 
 The JobFactory contract responsible for creating Jobs and fulfilling VRF is deployed to the Kovan testnet at `0x34a7a029b7134B0E8A8b0ebF0ea8016bA1e7a250`.
 
-If you deploy your own JobFactory, update it in `app/src/config.json`
+If you deploy your own JobFactory, update it in `app/src/config.json` and fund it with LINK.
 Update your ipfsApi and ipfsGateway host in `app/src/config.json`.
 
 I have prepared an IPFS directory with the required structure at `QmZYxkpQAtKpRdamFzoEzXq8q7Y5oJ6PPXUfoucxfsjNk8`. If you wish to create your own job, pin these contents to your own IPFS node or upload a directory with the following format:
