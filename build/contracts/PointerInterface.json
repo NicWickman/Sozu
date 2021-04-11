@@ -27,14 +27,14 @@
     "absolutePath": "/E/cryptodev/sozu/node_modules/@chainlink/contracts/src/v0.6/interfaces/PointerInterface.sol",
     "exportedSymbols": {
       "PointerInterface": [
-        2990
+        2829
       ]
     },
-    "id": 2991,
+    "id": 2830,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2984,
+        "id": 2823,
         "literals": [
           "solidity",
           "^",
@@ -51,9 +51,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2990,
+        "id": 2829,
         "linearizedBaseContracts": [
-          2990
+          2829
         ],
         "name": "PointerInterface",
         "nodeType": "ContractDefinition",
@@ -62,7 +62,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "38cc4831",
-            "id": 2989,
+            "id": 2828,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -70,23 +70,23 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 2985,
+              "id": 2824,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "107:2:16"
             },
             "returnParameters": {
-              "id": 2988,
+              "id": 2827,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2987,
+                  "id": 2826,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 2989,
+                  "scope": 2828,
                   "src": "133:7:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -95,7 +95,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2986,
+                    "id": 2825,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "133:7:16",
@@ -111,14 +111,14 @@
               ],
               "src": "132:9:16"
             },
-            "scope": 2990,
+            "scope": 2829,
             "src": "88:54:16",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2991,
+        "scope": 2830,
         "src": "57:87:16"
       }
     ],
@@ -129,7 +129,7 @@
       "absolutePath": "/E/cryptodev/sozu/node_modules/@chainlink/contracts/src/v0.6/interfaces/PointerInterface.sol",
       "exportedSymbols": {
         "PointerInterface": [
-          2990
+          2829
         ]
       }
     },
@@ -143,7 +143,7 @@
             ".0"
           ]
         },
-        "id": 2984,
+        "id": 2823,
         "name": "PragmaDirective",
         "src": "32:23:16"
       },
@@ -160,10 +160,10 @@
           "documentation": null,
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            2990
+            2829
           ],
           "name": "PointerInterface",
-          "scope": 2991
+          "scope": 2830
         },
         "children": [
           {
@@ -179,7 +179,7 @@
               ],
               "name": "getAddress",
               "overrides": null,
-              "scope": 2990,
+              "scope": 2829,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -192,7 +192,7 @@
                   ]
                 },
                 "children": [],
-                "id": 2985,
+                "id": 2824,
                 "name": "ParameterList",
                 "src": "107:2:16"
               },
@@ -204,7 +204,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 2989,
+                      "scope": 2828,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -218,32 +218,32 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 2986,
+                        "id": 2825,
                         "name": "ElementaryTypeName",
                         "src": "133:7:16"
                       }
                     ],
-                    "id": 2987,
+                    "id": 2826,
                     "name": "VariableDeclaration",
                     "src": "133:7:16"
                   }
                 ],
-                "id": 2988,
+                "id": 2827,
                 "name": "ParameterList",
                 "src": "132:9:16"
               }
             ],
-            "id": 2989,
+            "id": 2828,
             "name": "FunctionDefinition",
             "src": "88:54:16"
           }
         ],
-        "id": 2990,
+        "id": 2829,
         "name": "ContractDefinition",
         "src": "57:87:16"
       }
     ],
-    "id": 2991,
+    "id": 2830,
     "name": "SourceUnit",
     "src": "32:113:16"
   },
@@ -253,7 +253,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-10T06:27:23.729Z",
+  "updatedAt": "2021-04-11T11:57:26.067Z",
   "devdoc": {
     "methods": {}
   },

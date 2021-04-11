@@ -16,6 +16,8 @@ contract Job is Ownable, ChainlinkClient {
     uint256 private fee;
     factory_interface public factory;
 
+    address factory_address;
+
     address public employer;
     string public topLevelCid;
     string public jobType;
@@ -41,6 +43,8 @@ contract Job is Ownable, ChainlinkClient {
         bool answersSubmitted;
         bool answersAccepted;
         bool answersRejected;
+        bool proofFailed;
+        bool bountyClaimed;
         bytes32 committedRoot;
         bytes32 committedAnswersHash;
         uint256[] reviewIndexes;
@@ -52,6 +56,10 @@ contract Job is Ownable, ChainlinkClient {
     mapping(address => Batch) batches;
     address[] batchIndex;
     uint256[] rejectedBatchIndexes;
+
+    event ReviewsSelected(uint batchIndex, uint256[] reviewIndexes, address worker);
+    event ProvedAnswers(address worker, uint256 batchIndex, bool proofAccepted);
+    event BountyClaimed(address worker, uint batchIndex);
 
 
     /**
@@ -77,6 +85,8 @@ contract Job is Ownable, ChainlinkClient {
         jobId = "29fa9aa13bf1468788b7cc4a500a45b8";
         fee = 0.1 * 10**18; // 0.1 LINK
         factory = factory_interface(_factory);
+
+        factory_address = _factory;
 
         employer = _employer;
         topLevelCid = _topLevelCid;
@@ -188,58 +198,60 @@ contract Job is Ownable, ChainlinkClient {
             "Batch does not belong to sender"
         );
         require(
-            batches[msg.sender].answersSubmitted = false,
+            batches[msg.sender].answersSubmitted == false,
             "Answers have already been submitted for this batch."
         );
 
         batches[msg.sender].committedRoot = _root;
         batches[msg.sender].committedAnswersHash = _answersHash;
-        uint256[] memory reviewIndexes =
-            randomSelectReview(batches[msg.sender].index);
-        batches[msg.sender].reviewIndexes = reviewIndexes;
+        batches[msg.sender].answersSubmitted = true;
+
+
+        randomSelectReview(batches[msg.sender].index);
     }
 
-    function fulfill_random(bytes32 requestId, uint256 randomness) external returns(uint256) {
-        randomNumber = randomness;
-        return randomness;
-    }
 
-    function randomSelectReview(uint256 _batchIndex)
-        private
-        returns (uint256[] memory reviewIndexes)
-    {
-        factory_interface(factory.factory()).getRandomNumber(54389745, address(this)); // Some random Seed
-
+    function fulfill_random(bytes32 _requestId, uint256 _randomness, uint256 _batchIndex) external returns(uint256) {
         uint256 _thisBatchSize;
+
         if (_batchIndex == SafeMath.sub(numBatches, 1)) {
             _thisBatchSize = lastBatchSize;
         } else {
             _thisBatchSize = batchSize;
         }
-        uint256 numReviews = SafeMath.mul(reviewPct, batchSize);
 
+
+        uint256 numReviews = SafeMath.div(batchSize, reviewPct);
         uint256[] memory _reviewIndexes = new uint256[](numReviews);
 
         for (uint256 i; i < numReviews; i++) {
             _reviewIndexes[i] = SafeMath.add(
-                SafeMath.mul(_batchIndex, _thisBatchSize),
+                SafeMath.mul(_batchIndex, batchSize),
                 SafeMath.mod(
                     uint256(
-                        keccak256(abi.encodePacked(randomNumber, nonce))
+                        keccak256(abi.encodePacked(_randomness, nonce))
                     ),
                     _thisBatchSize
                 )
             );
+            nonce++;
         }
 
-        return _reviewIndexes;
+        batches[batchIndex[_batchIndex]].reviewIndexes = _reviewIndexes;
+        emit ReviewsSelected(_batchIndex, _reviewIndexes, batchIndex[_batchIndex]);
     }
+
+    function randomSelectReview(uint256 _batchIndex)
+        private
+    {
+        factory_interface(factory_address).getRandomNumber(54389745, address(this), _batchIndex); // Some random Seed
+    }
+
 
     function proveAnswers(
         uint256 _batchIndex,
         uint256[] calldata _answers,
-        bytes32[] calldata _proof,
-        bytes32 _answersHash
+        bytes32[][] calldata _proofs
     ) external {
         // submit merkle proof of answers
         // submit the future hash of hash of IPFS file
@@ -248,51 +260,31 @@ contract Job is Ownable, ChainlinkClient {
             batchIndex[_batchIndex] == msg.sender,
             "Batch does not belong to sender"
         );
-        require(
-            batches[batchIndex[_batchIndex]].answersSubmitted == true,
-            "Batch has not had answers submitted."
-        );
 
-        // Construct leaves internally with returned CIDs from Chainlink to verify the proof.
-        (uint256 indexMin, uint256 indexMax) = getTaskIndexesForAddress(msg.sender);
-        
-        bytes32[] memory leaves = new bytes32[](_answers.length);
-        uint256 answersIndex = 0;
-        for (uint i = indexMin; i <= indexMax; i++){
-            bytes32 requestId = requestIndexCID(topLevelCid, i);
-            string memory returnedCid = returnedCids[requestId];
-            bytes32 leaf = keccak256(abi.encode(i, returnedCid, _answers[answersIndex]));
-            leaves[answersIndex] = leaf;
-            answersIndex++;
+
+        bool proofFailed = false;
+        for (uint256 i; i < _answers.length; i++){
+            bytes32 leaf = keccak256(abi.encodePacked(_answers[i]));
+            bool proven = MerkleProof.verify(_proofs[i], batches[batchIndex[_batchIndex]].committedRoot, leaf);
+            if (proven == false){
+                proofFailed = true;
+            }
         }
 
-        for (uint i; i < leaves.length; i++){
-        require(
-            MerkleProof.verify(
-                _proof,
-                batches[msg.sender].committedRoot,
-                leaves[i]
-            ),
-            "Merkle proof failed."
-        );
+        if (proofFailed){
+            batches[msg.sender].proofFailed = true;
+            emit ProvedAnswers(msg.sender, _batchIndex, false);
+        } else {
+            // We've proven the submitted answers for review match what the worker committed earlier.
+            batches[msg.sender].reviewAnswers = _answers;
+            batches[msg.sender].proofFailed = false;
+            emit ProvedAnswers(msg.sender, _batchIndex, true);
         }
-
-        // We've proven the submitted answers for review match what the worker committed earlier.
-        batches[msg.sender].committedAnswersHash = _answersHash;
-        batches[msg.sender].reviewAnswers = _answers;
 
     }
 
     function acceptAnswers(uint256 _batchIndex) external onlyEmployer {
         require(isBatch(batchIndex[_batchIndex]), "Batch index does not exist");
-        require(
-            batchIndex[_batchIndex] == msg.sender,
-            "Batch does not belong to sender"
-        );
-        require(
-            batches[batchIndex[_batchIndex]].answersSubmitted == true,
-            "Batch has not had answers submitted."
-        );
         batches[batchIndex[_batchIndex]].answersAccepted = true;
     }
 
@@ -306,15 +298,10 @@ contract Job is Ownable, ChainlinkClient {
         batches[batchIndex[_batchIndex]].isBatch = false;
     }
 
-    function fulfill(bytes32 _requestId, string memory _cid) public
-        recordChainlinkFulfillment(_requestId){
-        returnedCids[_requestId] = _cid;
-    }
-
     function finalizeSubmission(uint256 _batchIndex, string calldata _cid)
         external
     {
-        require(isBatch(batchIndex[_batchIndex]), "Batch index does not exist");
+        require(isBatch(msg.sender), "Batch index does not exist");
         require(
             batchIndex[_batchIndex] == msg.sender,
             "Batch does not belong to sender"
@@ -327,23 +314,30 @@ contract Job is Ownable, ChainlinkClient {
             batches[batchIndex[_batchIndex]].answersAccepted == true,
             "Batch has not had answers accepted."
         );
-        require(
-            keccak256(abi.encode(_cid)) ==
-                batches[batchIndex[_batchIndex]].committedAnswersHash,
-            "Batch finalized answer hash does not match committed answers hash."
-        );
+        // require(
+        //     keccak256(abi.encodePacked(_cid)) ==
+        //         batches[batchIndex[_batchIndex]].committedAnswersHash,
+        //     "Batch finalized answer hash does not match committed answers hash."
+        // );
 
-        // Chainlink APIConsumer Call to confirm the IPFS file exists
-        bytes32 requestId = requestCID(_cid);
-        require(keccak256(abi.encode(returnedCids[requestId])) == keccak256(abi.encode(_cid)), "Hash of submitted cid does not match committed answers hash.");
+        require(batches[msg.sender].bountyClaimed == false, "Bounty has been already claimed.");
 
         batches[msg.sender].answersCID = _cid;
-        claimBounty(msg.sender, _batchIndex);
+        batches[msg.sender].bountyClaimed = true;
+
+        address payable recipient = payable(msg.sender);
+        claimBounty(recipient, _batchIndex);
+        emit BountyClaimed(msg.sender, _batchIndex);
     }
 
+    bool locked = false;
     function claimBounty(address payable _recipient, uint256 _batchIndex)
         private
     {
+
+        require(!locked, "Reentrant call detected!");
+        locked = true;
+
         uint256 _thisBatchSize;
         if (_batchIndex == SafeMath.sub(numBatches, 1)) {
             _thisBatchSize = lastBatchSize;
@@ -357,7 +351,11 @@ contract Job is Ownable, ChainlinkClient {
             address(this).balance >= bounty,
             "Contract does not have enough funds."
         );
-        _recipient.transfer(bounty);
+
+        (bool success, bytes memory transactionBytes) = _recipient.call{value:bounty}("");
+        
+        require(success, "Transfer failed.");
+        locked = false;
     }
 
     function getTotalBountyPool() public view returns (uint256 totalPool) {
@@ -365,49 +363,9 @@ contract Job is Ownable, ChainlinkClient {
     }
 
     function getTaskBounty() public view returns (uint256 taskBounty) {
-        return totalBountyPool / numTasks;
+        return SafeMath.div(totalBountyPool, numTasks);
     }
 
-
-    /**
-     * Create a Chainlink request to retrieve API response, find the target
-     */
-    function requestCID(string memory _cid)
-        public
-        returns (bytes32 requestId)
-    {
-        Chainlink.Request memory request =
-            buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
-
-        // Set the URL to perform the GET request on
-        request.add(
-            "get",
-            string(abi.encode("http://ipfs.io/api/v0/ls?arg=", _cid))
-        );
-
-        request.add("path", "Objects.0.Hash");
-
-        // Sends the request
-        return sendChainlinkRequestTo(oracle, request, fee);
-    }
-
-    function requestIndexCID(string memory _cid, uint256 _idx)
-        public
-        returns (bytes32 requestId)
-    {
-        Chainlink.Request memory request =
-            buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
-
-        // Set the URL to perform the GET request on
-        request.add(
-            "get",
-            string(abi.encode("http://ipfs.io/api/v0/ls?arg=", _cid))
-        );
-
-        request.add("path", string(abi.encode("Objects.0.Links.", _idx, ".Hash")));
-
-        // Sends the request
-        return sendChainlinkRequestTo(oracle, request, fee);
-    }
+    fallback() payable external {}
 
 }

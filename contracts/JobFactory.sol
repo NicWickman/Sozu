@@ -43,7 +43,12 @@ contract JobFactory is VRFConsumerBase {
 
     JobData[] public jobsData;
 
-    mapping(bytes32 => address) jobVRFRequests;
+    struct jobVRFRequest {
+        address job;
+        uint batchIndex;
+    }
+    mapping(bytes32 => jobVRFRequest) jobVRFRequests;
+
 
     function createAndEndow(
         string memory _topLevelCid,
@@ -103,10 +108,12 @@ contract JobFactory is VRFConsumerBase {
         /** 
      * Requests randomness from a user-provided seed
      */
-    function getRandomNumber(uint256 userProvidedSeed, address _job) public returns (bytes32 requestId) {
+    function getRandomNumber(uint256 userProvidedSeed, address _job, uint256 _batchIndex) public returns (bytes32 requestId) {
         require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK");
         bytes32 _requestId = requestRandomness(keyHash, fee, userProvidedSeed);
-        jobVRFRequests[_requestId] = _job;
+
+        jobVRFRequest memory vrfRequest = jobVRFRequest(_job, _batchIndex);
+        jobVRFRequests[_requestId] = vrfRequest;
         return _requestId;
     }
 
@@ -115,6 +122,6 @@ contract JobFactory is VRFConsumerBase {
      */
     function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
         require(msg.sender == 0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9);
-        factory_interface(jobVRFRequests[requestId]).fulfill_random(requestId, randomness);
+        job_interface(jobVRFRequests[requestId].job).fulfill_random(requestId, randomness, jobVRFRequests[requestId].batchIndex);
     }
 }
