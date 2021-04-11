@@ -50,7 +50,7 @@ npx patch-package
 yarn start
 ```
 
-I did not have time to "listen" and update the UI after each transaction in the process. Refresh your browser after your transaction is confirmed. Allow an extra ~30 seconds after "committing answers" as a worker to give Chainlink VRF time to generate random numbers.
+I did not have time to "listen" and update the UI after each transaction in the process. Refresh your browser after your transaction is confirmed. Allow an extra ~30-60 seconds after "committing answers" as a worker to give Chainlink VRF time to generate random numbers.
 
 The JobFactory contract responsible for creating Jobs and fulfilling VRF is deployed to the Kovan testnet at `0x34a7a029b7134B0E8A8b0ebF0ea8016bA1e7a250`.
 
