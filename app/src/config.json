@@ -1,0 +1,5 @@
+{
+	"JobFactory": "0x34a7a029b7134B0E8A8b0ebF0ea8016bA1e7a250",
+	"ipfsApi": "http://localhost:5001/api/v0",
+	"ipfsGateway": "http://localhost:8080/ipfs"
+}
