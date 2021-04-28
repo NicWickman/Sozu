@@ -1,6 +1,6 @@
 # Sozu
 
-Mechanical Turk reimagined on the blockchain. Chainlink Hackathon Spring 2021
+Mechanical Turk reimagined on the blockchain.
 
 # Description
 
@@ -24,7 +24,7 @@ This basic method can be modified to support a large variety of types of work, i
 
 # Notes
 
-I am new to Solidity and blockchain as of this Hackathon. I am also a solo hacker! As such, this project is not quite complete, and I was unable to fully realize it in time for submission. A more complete version of this project would include interaction with IPFS through Chainlink's oracle nodes to confirm that the contents of the submitted answers actually exist on the network, as well as an IPFS node which listens for contract events and pins the finally submitted answer files. The contract is not entirely secure, and I was unable to get a few "requires" working in time, most notably that the finally submitted IPFS file is a match to the promised one.
+Current status: Submitted for the Chainlink Hackathon. A more complete version of this project would include interaction with IPFS through Chainlink's oracle nodes to confirm that the contents of the submitted answers actually exist on the network, as well as an IPFS node which listens for contract events and pins the finally submitted answer files. The contract is not entirely secure, and I was unable to get a few "requires" working in time, most notably that the finally submitted IPFS file is a match to the promised one.
 
 To be economically sensible, this project would require deployment on a scaling solution such as Polygon or Polkadot.
 
