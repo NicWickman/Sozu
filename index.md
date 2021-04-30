@@ -32,11 +32,15 @@ She pins her exercise descriptions to IPFS and creates a Sozu Job for each langu
 
 ### Podcast Portal
 
-Podcast Portal hosts thousands of new podcast episodes each day. One of their benefits to their creators is their "automated" transcription service, which adds a full text transcript to any podcast for a minor fee. They use Sozu to outsource the transcriptions with a short processing time and fewer errors than if they used AI.
+Podcast Portal hosts thousands of new podcast episodes each day. One of their benefits to their creators is their "automated" transcription service which adds a full text transcript to any podcast for a minor fee. They use Sozu to outsource the transcriptions with a short processing time and fewer errors than if they used AI.
 
 ### Accessible Entertainment
 
 Accessible Entertainment partners with creators around the world to make their video content accessible to hearing and vision impaired people. AE uses Sozu to crowdsource the annotations and described-video that customers love them for.
+
+### Everyone Et al.
+
+A researcher at the University of Earth is conducting a survey on global happiness. She can't afford to pay for it, but creates a Sozu Job anyways because it's fast, convenient and she doesn't need to sign up. Despite no financial incentive, many people are "happy" to help and she gets thousands of responses from around the world.
 
 ### ...And More
 
