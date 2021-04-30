@@ -40,7 +40,7 @@ Accessible Entertainment partners with creators around the world to make their v
 
 ### Everyone Et al.
 
-A researcher at the University of Earth is conducting a survey on global happiness. She can't afford to pay for it, but creates a Sozu Job anyways because it's fast, convenient and she doesn't need to sign up. Despite no financial incentive, many people are "happy" to help and she gets thousands of responses from around the world.
+A researcher at the University of Earth is conducting a survey on global happiness. She can't afford to pay, but uses Sozu because it's fast, convenient and she doesn't need to sign up. Despite no financial incentive, many people are "happy" to help and she gets thousands of responses from around the world.
 
 ### ...And More
 
