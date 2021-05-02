@@ -1,6 +1,6 @@
 ## Tapping a Global Free Market
 
-Sozu is a crowdsourcing platform in development for the Ethereum and IPFS ecosystem. Companies and individuals can instantly access a global workforce to complete intelligence tasks such as data labelling, transcription and surveys. These employers set their own price, retain their privacy, and pay the lowest fees in the industry.
+Sozu is a crowdsourcing platform in development for the Ethereum and IPFS ecosystems. Companies and individuals can instantly access a global workforce to complete intelligence tasks such as data labelling, transcription and surveys. These employers set their own price, retain their privacy, and pay the lowest fees in the industry.
 
 For workers, Sozu offers a fair and transparent source of income for billions of underbanked and underemployed people around the world. They expose no personally identifiable information, receive payment instantly upon having work accepted, and benefit from complete information about the nature and terms of the work they perform.
 
@@ -24,7 +24,7 @@ What could you do with instant access to a global workforce? Below are a few ide
 
 ActuallyOpenAI is dedicated to creating AI for the benefit of all humanity. They've decided that openness and transparency about their work is important. They are building a new computer vision network and it requires an extraordinary amount of data. To be transparent about their work and subsequent results, ActuallyOpenAI pins all of their new image data to IPFS for the public to access, totalling 100M images.
 
-To label this data, they create a Sozu Job. People around the world label images for $0.01 USD each at an average rate of 1000/hr for a wage of $10/hr. 12,500 workers earn $100 and ActuallyOpenAI has created the world's largest public, labelled image dataset in a single day for $1.1M, with $100k going to Sozu.
+To label this data, they create a Sozu Job. People around the world label images for $0.01 USD each at an average rate of 1000/hr for a wage of $10/hr. 12,500 workers earn $100 and ActuallyOpenAI has created the world's largest public, labelled image dataset in a single day for $1M.
 
 <br />
 
